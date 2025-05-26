@@ -38,15 +38,15 @@ export default component$(() => {
   return (
     <div class="">
       <div class={`absolute ${homeStep.value === 0 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}>
-        <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo" src='public/vid2.mp4'></video>
+        <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo" src='/vid2.mp4'></video>
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
       </div>
       <div class={`absolute ${homeStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}>
-        <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo2" src='public/vid1.mp4'></video>
+        <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo2" src='/vid1.mp4'></video>
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
       </div>
       <div class={`absolute ${homeStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}>
-        <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo3" src='public/samplevid3.mp4'></video>
+        <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo3" src='/samplevid3.mp4'></video>
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
       </div>
       <div class={`absolute top-[30%] pl-[70px] transition-init ${homeStep.value === 0 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>

@@ -7,7 +7,7 @@ export default component$(() => {
       <div class={['container', styles.wrapper] + "  absolute flex items-center w-full justify-between !px-[70px]"}>
         <div class={styles.logo}>
           <a href="/" title="qwik">
-            <img height={50} width={170} src="public/logo.png" />
+            <img height={50} width={170} src="logo.png" />
           </a>
         </div>
         <ul>

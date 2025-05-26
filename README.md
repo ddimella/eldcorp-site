@@ -15,7 +15,7 @@ This project is using Qwik with [QwikCity](https://qwik.builder.io/qwikcity/over
 Inside your project, you'll see the following directory structure:
 
 ```
-├── public/
+├── /
 │   └── ...
 └── src/
     ├── components/

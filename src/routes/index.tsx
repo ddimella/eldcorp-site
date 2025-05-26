@@ -80,7 +80,7 @@ export default component$(() => {
     <>
       <Hero />
 
-      <div class="pt-[910px]">
+      <div class="pt-[925px]">
         <div class="flex items-center justify-around px-[250px] counters h-[225px] w-full bg-white">
           <div class="border-l-4 pl-5 border-l-[#E29D21]">
             <p class="text-[#111827] text-[48px] font-bold">8k</p>
@@ -161,16 +161,16 @@ export default component$(() => {
                   <p class={`absolute ${workStep.value === 3 ? " opacity-1" : "opacity-0"}  transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}>03</p>
                   <p class={` ${workStep.value === 4 ? " visible opacity-1" : "opacity-0"}  transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}>1</p>
                   <div>
-                    <img src="public/ourwork1.png" class={`absolute ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`} />
-                    <img src="public/ourwork3.png" class={`absolute ${workStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`} />
-                    <img src="public/work3.jpg" class={`absolute ${workStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`} />
+                    <img src="/ourwork1.png" class={`absolute ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`} />
+                    <img src="/ourwork3.png" class={`absolute ${workStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`} />
+                    <img src="/work3.jpg" class={`absolute ${workStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`} />
                   </div>
                 </div>
                 <div class="ml-20">
                   {/* Work Image 2  */}
-                  <img src="public/ourwork2.png" class={`absolute h-[385px] w-[570px] ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`} alt="" />
-                  <img src="public/work22.jpg" class={`absolute h-[385px] w-[570px] ${workStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`} alt="" />
-                  <img src="public/work33.jpg" class={`absolute h-[385px] w-[570px] ${workStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`} alt="" />
+                  <img src="/ourwork2.png" class={`absolute h-[385px] w-[570px] ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`} alt="" />
+                  <img src="/work22.jpg" class={`absolute h-[385px] w-[570px] ${workStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`} alt="" />
+                  <img src="/work33.jpg" class={`absolute h-[385px] w-[570px] ${workStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`} alt="" />
                 </div>
               </div>
               <div class="ml-5 h-[350px] ">
@@ -390,12 +390,12 @@ export default component$(() => {
               <div class="flex mt-12 space-x-12">
                 <div class="relative w-[780px] h-[340px]">
                   {serviceStep.value === 1 ?
-                    <img src="public/serviceproducts.png" class={``} alt="" />
+                    <img src="/serviceproducts.png" class={``} alt="" />
                     :
                     serviceStep.value === 2 ?
-                      <img src="public/serviceconsolidation.png" class={``} alt="" />
+                      <img src="/serviceconsolidation.png" class={``} alt="" />
                       :
-                      <img src="public/servicealmacen.png" class={``} alt="" />
+                      <img src="/servicealmacen.png" class={``} alt="" />
                   }
                   <div class="absolute bottom-12 left-8">
                     <Steps selectedStep={serviceStep.value} onClickStep={onClickStepService} />
@@ -438,7 +438,7 @@ export default component$(() => {
             </div>
             <div class="flex mt-12 space-x-4">
               <div class="mr-8">
-                <img width={590} height={450} src="public/sampleformimg.jpg" class=""></img>
+                <img width={590} height={450} src="/sampleformimg.jpg" class=""></img>
               </div>
               <div class="flex-col w-1/2">
                 <p class="text-left text-white font-bold text-[64px] playfair">Ponte en contacto con nosotros</p>
