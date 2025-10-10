@@ -8,10 +8,10 @@ interface StepsProps {
 
 const HeroSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
   return (
-    <div class="flex items-center">
-      <div onClick$={() => { onClickStep(0); }} class={`border-b cursor-pointer tex-[18px] ${selectedStep === 0 ? "border-b-[#E29D21] text-[#E29D21] pb-10" : "border-b-white text-white"} pb-10 w-[60px] text-center font-bold`}>Start</div>
-      <div onClick$={() => { onClickStep(1); }} class={`border-b cursor-pointer tex-[18px] ${selectedStep === 1 ? "border-b-[#E29D21] text-[#E29D21] pb-10" : "border-b-white text-white"} pb-10 w-[60px] text-center font-bold`}>01</div>
-      <div onClick$={() => { onClickStep(2); }} class={`border-b cursor-pointer tex-[18px] ${selectedStep === 2 ? "border-b-[#E29D21] text-[#E29D21] pb-10" : "border-b-white text-white"} pb-10 w-[60px] text-center font-bold`}>02</div>
+    <div class="flex items-center text-base sm:text-sm md:text-base">
+      <div onClick$={() => { onClickStep(0); }} class={`border-b cursor-pointer ${selectedStep === 0 ? "border-b-[#E29D21] text-[#E29D21] pb-6 sm:pb-4 md:pb-10" : "border-b-white text-white"} pb-6 sm:pb-4 md:pb-10 w-20 sm:w-12 md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>Start</div>
+      <div onClick$={() => { onClickStep(1); }} class={`border-b cursor-pointer ${selectedStep === 1 ? "border-b-[#E29D21] text-[#E29D21] pb-6 sm:pb-4 md:pb-10" : "border-b-white text-white"} pb-6 sm:pb-4 md:pb-10 w-20 sm:w-12 md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>01</div>
+      <div onClick$={() => { onClickStep(2); }} class={`border-b cursor-pointer ${selectedStep === 2 ? "border-b-[#E29D21] text-[#E29D21] pb-6 sm:pb-4 md:pb-10" : "border-b-white text-white"} pb-6 sm:pb-4 md:pb-10 w-20 sm:w-12 md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>02</div>
     </div>
   );
 });
@@ -39,46 +39,59 @@ export default component$(() => {
     <div class="">
       <div class={`absolute ${homeStep.value === 0 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}>
         <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo" src='/vid2.mp4'></video>
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-transparent"></div>
       </div>
       <div class={`absolute ${homeStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}>
         <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo2" src='/vid1.mp4'></video>
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-transparent"></div>
       </div>
       <div class={`absolute ${homeStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}>
         <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo3" src='/samplevid3.mp4'></video>
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-transparent"></div>
       </div>
-      <div class={`absolute top-[30%] pl-[70px] transition-init ${homeStep.value === 0 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
-        <TitleComponent name='MÁS ALLÁ DE LOS LÍMITES' isLong={false} />
-        <div class="mt-8 mb-[180px]">
-          <p class="font-bold text-[88px] transition-init playfair">Horizontes Industriales</p>
-          <p class="font-bold text-[88px] transition-init playfair">Desbloqueados</p>
-          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">Ponerse en Contacto</button>
+      <div class={`absolute inset-0 flex flex-col justify-center items-center md:items-start p-4 sm:p-8 md:p-16 lg:p-24 xl:pl-[70px] transition-init ${homeStep.value === 0 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
+        <div class="flex flex-col items-center md:items-start w-full max-w-md mx-auto md:mx-0">
+          <TitleComponent name='MÁS ALLÁ DE LOS LÍMITES' isLong={false} class="text-4xl md:text-[32px] inter-bold max-w-[240px] text-center mx-auto md:mx-0 md:max-w-full" />
+          <div class="mt-8 sm:mt-12 mb-8 sm:mb-12 md:mb-24 text-center md:text-left">
+            <p class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] transition-init playfair-regular">Horizontes Industriales</p>
+            <p class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] transition-init playfair-regular mt-4">Desbloqueados</p>
+            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] md:w-[232px] h-[40px] sm:h-[50px] md:h-[65px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base md:text-lg inter-semibold">CONTACTO</button>
+          </div>
+          <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
         </div>
-        <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
       </div>
-      <div class={`absolute top-[30%] pl-[70px] transition-init ${homeStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duración-500`}>
-        <TitleComponent name='MAESTRÍA MECÁNICA' isLong={false} />
-        <div class="mt-8 mb-[180px]">
-          <p class="font-bold text-[88px] transition-init playfair">Empoderando Industrias,</p>
-          <p class="font-bold text-[88px] transition-init playfair">Forjando Alianzas</p>
-          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">Ponerse en Contacto</button>
+      <div class={`absolute inset-0 flex flex-col justify-center items-center md:items-start p-4 sm:p-8 md:p-16 lg:p-24 xl:pl-[70px] transition-init ${homeStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
+        <div class="flex flex-col items-center md:items-start w-full max-w-md mx-auto md:mx-0">
+          <TitleComponent name='MAESTRÍA MECÁNICA' isLong={false} class="text-4xl md:text-[32px] inter-bold  max-w-[240px] text-center mx-auto md:mx-0 md:max-w-full" />
+          <div class="mt-8 sm:mt-12 mb-8 sm:mb-12 md:mb-24 text-center md:text-left">
+            <p class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] transition-init playfair-regular">Empoderando Industrias,</p>
+            <p class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] transition-init playfair-regular mt-4">Forjando Alianzas</p>
+            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] md:w-[232px] h-[40px] sm:h-[50px] md:h-[65px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base md:text-lg inter-semibold">CONTACTO</button>
+          </div>
+          <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
         </div>
-        <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
       </div>
-      <div class={`absolute top-[30%] pl-[70px] transition-init ${homeStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duración-500`}>
-        <TitleComponent name='PROYECTOS INDUSTRIALES' isLong={false} />
-        <div class="mt-8 mb-[180px]">
-          <p class="font-bold text-[88px] transition-init playfair">Elevando Resultados de Proyectos</p>
-          <p class="font-bold text-[88px] transition-init playfair text-transparent">_</p>
-          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">Ponerse en Contacto</button>
+      <div class={`absolute inset-0 flex flex-col justify-center items-center md:items-start p-4 sm:p-8 md:p-16 lg:p-24 xl:pl-[70px] transition-init ${homeStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
+        <div class="flex flex-col items-center md:items-start w-full max-w-md mx-auto md:mx-0">
+          <TitleComponent name='PROYECTOS INDUSTRIALES' isLong={false} class="text-4xl md:text-[32px] inter-bold max-w-[240px] text-center mx-auto md:mx-0 md:max-w-full" />
+          <div class="mt-8 sm:mt-12 mb-8 sm:mb-12 md:mb-24 text-center md:text-left">
+            <p class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] transition-init playfair-regular">Elevando Resultados de Proyectos</p>
+            <p class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] transition-init playfair-regular mt-4 text-transparent">_</p>
+            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] md:w-[232px] h-[40px] sm:h-[50px] md:h-[65px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base md:text-lg inter-semibold">CONTACTO</button>
+          </div>
+          <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
         </div>
-        <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
       </div>
-      <div class="absolute right-[70px] top-[400px] space-y-2">
-        <MdiInstagram />
-        <MdiTwitter />
+      <div class="absolute right-4 sm:right-8 md:right-16 lg:right-[70px] top-1/2 -translate-y-1/2 space-y-1 sm:space-y-2 hidden md:block">
+        <MdiInstagram class="w-6 h-6 sm:w-12 sm:h-12" />
+        <MdiTwitter class="w-6 h-6 sm:w-12 sm:h-12" />
+      </div>
+      <div class="absolute bottom-8 left-0 right-0 flex justify-center space-x-6 md:hidden">
+        <MdiInstagram class="w-10 h-10" />
+        <MdiTwitter class="w-10 h-10" />
       </div>
     </div>
   );

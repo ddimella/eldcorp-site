@@ -6,7 +6,7 @@
  *
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,4 +75,44 @@ body {
 
 .playfair {
   font-family: "Playfair Display";
+}
+
+.playfair-bold {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+.playfair-regular {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+
+.inter-bold {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
+.inter-semibold {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.inter-extrabold {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+}
+
+.opensans {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+.opensans-bold {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+}
+
+.opensans-semibold {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
 }

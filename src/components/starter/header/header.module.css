@@ -7,6 +7,12 @@
 .logo {
   display: inline-block;
 }
+
+@media (max-width: 767px) {
+  .wrapper {
+    justify-content: center;
+  }
+}
 .logo a {
   display: block;
 }

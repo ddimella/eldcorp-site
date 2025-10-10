@@ -1,4 +1,4 @@
-import { $, QRL, QwikIntrinsicElements, component$, useSignal } from '@builder.io/qwik';
+import { $, QRL, QwikIntrinsicElements, component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 
 import Hero from '~/components/starter/hero/hero';
@@ -9,21 +9,91 @@ interface StepsProps {
   onClickStep: QRL<(step: number) => void>;
 }
 
+interface CounterProps {
+  target: number;
+  suffix?: string;
+  duration?: number;
+}
+
+const Counter = component$<CounterProps>(({ target, suffix = "", duration = 2000 }) => {
+  const count = useSignal(0);
+
+  useVisibleTask$(() => {
+    const increment = target / (duration / 16);
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        count.value = target;
+        clearInterval(timer);
+      } else {
+        count.value = Math.floor(current);
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  });
+
+  return (
+    <span class="transition-all duration-300 ease-in-out">{count.value}{suffix}</span>
+  );
+});
+
 const Steps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
   return (
-    <div class="flex items-center">
-      <div onClick$={() => { onClickStep(1) }} class={`border-b cursor-pointer tex-[18px] ${selectedStep === 1 ? "border-b-[#E29D21] text-[#E29D21] pb-10" : "border-b-white text-white"}  pb-10 w-[60px] text-center font-bold`}>01</div>
-      <div onClick$={() => { onClickStep(2) }} class={`border-b cursor-pointer  tex-[18px] ${selectedStep === 2 ? "border-b-[#E29D21] text-[#E29D21] pb-10" : "border-b-white text-white "} pb-10 w-[60px] text-center font-bold`}>02</div>
-      <div onClick$={() => { onClickStep(3) }} class={`border-b cursor-pointer  tex-[18px] ${selectedStep === 3 ? "border-b-[#E29D21] text-[#E29D21] pb-10" : "border-b-white text-white "} pb-10 w-[60px] text-center font-bold`}>03</div>
+    <div className="flex items-center">
+      <div onClick$={() => { onClickStep(1) }} className={`border-b cursor-pointer text-[18px] md:text-[18px] ${selectedStep === 1 ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10" : "border-b-white text-white"}  pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>01</div>
+      <div onClick$={() => { onClickStep(2) }} className={`border-b cursor-pointer  text-[18px] md:text-[18px] ${selectedStep === 2 ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10" : "border-b-white text-white "} pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>02</div>
+      <div onClick$={() => { onClickStep(3) }} className={`border-b cursor-pointer  text-[18px] md:text-[18px] ${selectedStep === 3 ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10" : "border-b-white text-white "} pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>03</div>
     </div>
   )
 })
 
-export const TitleComponent = component$(({ name, isLong }: { name: string, isLong: boolean }) => {
+const MobileCounters = component$(() => {
   return (
-    <div class="flex items-center">
-      <div class={`h-[3px] mr-6 !bg-[#E29D21] ${isLong ? " w-[305px]" : " w-[72px]"}`}></div>
-      <p class="uppercase text-[#E29D21] text-[18px] font-bold tracking-[6px]">{name}</p>
+    <div className="flex flex-col items-center justify-center space-y-8 py-8 px-8 md:hidden">
+      <div className="bg-white shadow-lg p-6 w-full max-w-[250px] flex">
+        <div className="h-full w-1 bg-[#E29D21] mr-4"></div>
+        <div className="text-left">
+          <p className="text-[#111827] text-4xl font-bold inter-bold"><Counter target={8000} /></p>
+          <p className="text-[#111827] text-xl font-bold inter-semibold">Ítems</p>
+          <p className="text-[#111827] text-xl font-bold inter-semibold">suministrados</p>
+        </div>
+      </div>
+      <div className="bg-white shadow-lg p-6 w-full max-w-[250px] flex">
+        <div className="h-full w-1 bg-[#E29D21] mr-4"></div>
+        <div className="text-left">
+          <p className="text-[#111827] text-4xl font-bold inter-bold"><Counter target={12000} suffix="+" /></p>
+          <p className="text-[#111827] text-xl font-bold inter-semibold">Libras </p>
+          <p className="text-[#111827] text-xl font-bold inter-semibold"> despachadas</p>
+        </div>
+      </div>
+      <div className="bg-white shadow-lg p-6 w-full max-w-[250px] flex">
+        <div className="h-full w-1 bg-[#E29D21] mr-4"></div>
+        <div className="text-left">
+          <p className="text-[#111827] text-4xl font-bold inter-bold"><Counter target={16} /></p>
+          <p className="text-[#111827] text-xl font-bold inter-semibold">Pies cúbicos</p>
+          <p className="text-[#111827] text-xl font-bold inter-semibold">despachados</p>
+        </div>
+      </div>
+      <div className="bg-white shadow-lg p-6 w-full max-w-[250px] flex">
+        <div className="h-full w-1 bg-[#E29D21] mr-4"></div>
+        <div className="text-left">
+          <p className="text-[#111827] text-4xl font-bold inter-bold"><Counter target={21} suffix="+" /></p>
+          <p className="text-[#111827] text-xl font-bold inter-semibold">Clientes confían</p>
+          <p className="text-[#111827] text-xl font-bold inter-semibold">en nosotros</p>
+        </div>
+      </div>
+    </div>
+  )
+})
+
+export const TitleComponent = component$(({ name, isLong, class: customClass }: { name: string, isLong: boolean, class?: string }) => {
+  return (
+    <div className="flex flex-col items-center md:items-start">
+      <p className={`uppercase text-[#E29D21] text-[18px] font-bold tracking-[3px] md:tracking-[6px] mb-2 md:mb-0 mt-16 md:mt-0 ${customClass || ''} inter-bold`}>{name}</p>
+      <div className={`h-[3px] mt-2 md:mt-4 !bg-[#E29D21] ${isLong ? " w-[150px] sm:w-[250px] md:w-[305px]" : " w-[50px] sm:w-[60px] md:w-[72px]"}`}></div>
     </div>
   )
 })
@@ -77,126 +147,204 @@ export default component$(() => {
   });
 
   return (
-    <>
+    <div>
       <Hero />
-
-      <div class="pt-[925px]">
-        <div class="flex items-center justify-around px-[250px] counters h-[225px] w-full bg-white">
-          <div class="border-l-4 pl-5 border-l-[#E29D21]">
-            <p class="text-[#111827] text-[48px] font-bold">8k</p>
-            <p class="text-[#111827] text-[24px] font-bold">Ítems</p>
-            <p class="text-[#111827] text-[24px] font-bold">suministrados</p>
+      <div className="pt-[900px] md:pt-[1000px]">
+        <div class="hidden md:flex flex-col sm:flex-row items-center justify-around counters min-h-[225px] w-full bg-white py-8 md:rounded-none shadow-lg">
+          <div class="border-l-4 pl-5 border-l-[#E29D21] mb-4 sm:mb-0 text-center sm:text-left">
+            <div class="flex items-start">
+              <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
+              <div>
+                <p class="text-[#111827] text-3xl sm:text-4xl lg:text-[48px] font-bold inter-bold">8k</p>
+                <p class="text-[#111827] text-lg sm:text-xl lg:text-[24px] font-bold inter-semibold">Ítems</p>
+                <p class="text-[#111827] text-lg sm:text-xl lg:text-[24px] font-bold inter-semibold">suministrados</p>
+              </div>
+            </div>
           </div>
-          <div class="border-l-4 pl-5 border-l-[#E29D21]">
-            <p class="text-[#111827] text-[48px] font-bold">12k+</p>
-            <p class="text-[#111827] text-[24px] font-bold">Libras </p>
-            <p class="text-[#111827] text-[24px] font-bold"> despachadas</p>
+          <div class="border-l-4 pl-5 border-l-[#E29D21] mb-4 sm:mb-0 text-center sm:text-left">
+            <div class="flex items-start">
+              <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
+              <div>
+                <p class="text-[#111827] text-[48px] font-bold inter-bold">12k+</p>
+                <p class="text-[#111827] text-[24px] font-bold inter-semibold">Libras </p>
+                <p class="text-[#111827] text-[24px] font-bold inter-semibold"> despachadas</p>
+              </div>
+            </div>
           </div>
-          <div class="border-l-4 pl-5 border-l-[#E29D21]">
-            <p class="text-[#111827] text-[48px] font-bold">16</p>
-            <p class="text-[#111827] text-[24px] font-bold">Pies cúbicos</p>
-            <p class="text-[#111827] text-[24px] font-bold">despachados</p>
-            {/* <p class="text-[#111827] text-[24px] font-bold">despachados</p> */}
+          <div class="border-l-4 pl-5 border-l-[#E29D21] mb-4 sm:mb-0 text-center sm:text-left">
+            <div class="flex items-start">
+              <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
+              <div>
+                <p class="text-[#111827] text-[48px] font-bold inter-bold">16</p>
+                <p class="text-[#111827] text-[24px] font-bold inter-semibold">Pies cúbicos</p>
+                <p class="text-[#111827] text-[24px] font-bold inter-semibold">despachados</p>
+              </div>
+            </div>
           </div>
-          <div class="border-l-4 pl-5 border-l-[#E29D21]">
-            <p class="text-[#111827] text-[48px] font-bold">21+</p>
-            <p class="text-[#111827] text-[24px] font-bold">Clientes confían</p>
-            <p class="text-[#111827] text-[24px] font-bold">en nosotros</p>
+          <div class="border-l-4 pl-5 border-l-[#E29D21] text-center sm:text-left">
+            <div class="flex items-start">
+              <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
+              <div>
+                <p class="text-[#111827] text-[48px] font-bold inter-bold">21+</p>
+                <p class="text-[#111827] text-[24px] font-bold inter-semibold">Clientes confían</p>
+                <p class="text-[#111827] text-[24px] font-bold inter-semibold">en nosotros</p>
+              </div>
+            </div>
           </div>
         </div>
+        <MobileCounters />
 
-        <div class="container h-[420px]">
+        <div class="md:container mx-auto mt-12 px-6 md:px-[90px] flex flex-col items-center">
 
-          <div id="about" class="flex space-x-10 mt-24 px-[90px]">
-            <div>
-              <TitleComponent name='SOBRE NOSOTROS' isLong={false} />
-              <div class="leading-6 mt-20 text-[16px] text-black font-bold p-14 pt-10 h-[297px] w-[370px] bg-[#E29D21]">
+          <div id="about" class="flex flex-col lg:flex-row items-center lg:items-start space-y-10 lg:space-y-0 lg:space-x-10 mt-16 px-4 sm:px-0 md:px-[90px]">
+            <div class="w-full lg:w-auto">
+              <TitleComponent name='SOBRE NOSOTROS' isLong={true} />
+              <div class="leading-6 mt-10 text-[16px] text-black p-8 sm:p-10 md:p-14 pt-10 bg-[#E29D21] shadow-lg max-w-full lg:max-w-[370px] mx-auto text-justify opensans-regular">
                 Desarrollo pionero y comercio global desde Puerto Ordaz, Venezuela. Mezclamos herencia con innovación, forjando conexiones duraderas y redefiniendo los estándares de la industria para un futuro más brillante.
               </div>
             </div>
-            <div>
-              <p class="text-[64px] font-bold playfair">¿Por qué Nosotros?</p>
-              <p class="leading-6 w-[800px] mt-6">
+            <div class="w-full lg:w-auto">
+              <p class="text-4xl sm:text-5xl lg:text-[64px] font-bold playfair-regular text-white text-center lg:text-left">¿Por qué Nosotros?</p>
+              <p class="leading-6 mt-6 text-white text-center lg:text-left max-w-full lg:max-w-[800px] mx-auto lg:mx-0 text-justify opensans-regular">
                 En ELD, no somos solo una empresa; somos un legado de innovación y confianza. Con más de 19 años de experiencia en Desarrollo, Evaluación de Proyectos y Comercio Internacional, somos su socio ideal para la excelencia. Desde nuestras raíces en Puerto Ordaz, Venezuela, hemos crecido para convertirnos en representantes exclusivos de empresas estadounidenses, sirviendo a todo el territorio venezolano y expandiéndonos internacionalmente con ELD CORP.
               </p>
-              <p class="mt-5 font-bold text-[#E29D21]">
+              <p class="mt-5 font-bold inter-bold text-[#E29D21] text-center lg:text-left">
                 Elija nuestra experiencia incomparable y compromiso inquebrantable.
               </p>
-              <div class="flex mt-12 space-x-14 justify-around">
-                <div class="pt-4 why-us h-[170px] w-[170px] bg-white text-[18px] text-[#0E1B1B] font-bold text-center rounded-md">
+              <div class="flex flex-col md:flex md:flex-row mt-12 gap-8 justify-items-center">
+                <div class="pt-4 why-us h-[170px] w-[170px] bg-white text-[18px] text-[#0E1B1B] inter-semibold text-center shadow-lg mx-auto">
                   <div class="flex justify-center">
-                    <Globe />
+                    <Globe class="w-[70px] h-[70px]" />
                   </div>
-                  <p class="mt-4">Alcance Global</p>
+                  <p class="mt-4 inter-semibold">Alcance Global</p>
                 </div>
-                <div class="pt-4 why-us h-[170px] w-[170px] bg-white text-[18px] text-[#0E1B1B] font-bold flex-col text-center rounded-md">
+                <div class="pt-4 why-us h-[170px] w-[170px] bg-white text-[18px] text-[#0E1B1B] inter-semibold flex-col text-center shadow-lg mx-auto">
                   <div class="flex justify-center">
-                    <MdiTools />
+                    <MdiTools class="w-[70px] h-[70px]" />
                   </div>
-                  <p class="mt-4">Experiencia</p>
+                  <p class="mt-4 inter-semibold">Experiencia</p>
                 </div>
-                <div class="pt-4 why-us h-[170px] w-[170px] bg-white text-[18px] text-[#0E1B1B] font-bold text-center rounded-md">
+                <div class="pt-4 why-us h-[170px] w-[170px] bg-white text-[18px] text-[#0E1B1B] inter-semibold text-center shadow-lg mx-auto md:mx-0">
                   <div class="flex justify-center">
-                    <Handshake />
+                    <Handshake class="w-[70px] h-[70px]" />
                   </div>
-                  <p class="mt-4">Asociaciones de Confianza</p>
+                  <p class="mt-4 inter-semibold">Asociaciones de Confianza</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div id="work" class="mt-24 px-[90px]">
-            <TitleComponent name='TRABAJOS SELECCIONADOS' isLong={true} />
-            <div class="mt-10">
-              <p class="text-white font-bold text-[64px] playfair">Nuestro Trabajo</p>
-              <p class="text-[16px] text-white w-[1171px] mt-5 leading-6">
+          <div id="work" class="mt-16 px-4 sm:px-0 md:px-[90px]">
+            {/* Removed white title as requested */}
+            <div class="mt-10 text-center lg:text-left">
+              <p class="text-[16px] text-white mt-5 leading-6 max-w-full lg:max-w-[1171px] mx-auto lg:mx-0 text-justify opensans-regular">
                 Explora una muestra de nuestros esfuerzos pasados. A través de una combinación de tradición e innovación, cada proyecto ejemplifica nuestra dedicación a la excelencia, dejando una marca duradera en industrias de todo el mundo.
               </p>
             </div>
-            <div class="flex mt-16">
-              <div class=" w-[900px] h-[480px] flex">
-                <div class="">
-                  <p class={`absolute ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}>01</p>
-                  <p class={`absolute ${workStep.value === 2 ? " opacity-1" : "opacity-0"}  transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}>02</p>
-                  <p class={`absolute ${workStep.value === 3 ? " opacity-1" : "opacity-0"}  transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}>03</p>
-                  <p class={` ${workStep.value === 4 ? " visible opacity-1" : "opacity-0"}  transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}>1</p>
-                  <div>
-                    <img src="/ourwork1.png" class={`absolute ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`} />
-                    <img src="/ourwork3.png" class={`absolute ${workStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`} />
-                    <img src="/work3.jpg" class={`absolute ${workStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`} />
+            <div class="flex flex-col lg:flex-row mt-16 items-center lg:items-start">
+              {/* Mobile View for Nuestro Trabajo */}
+              <div class="flex flex-col items-center lg:hidden mt-8 space-y-8 w-full">
+                <div class="relative w-full max-w-[405px] h-[300px]">
+                  <div class="absolute inset-0 w-full h-[300px]"></div>
+                  <div class="absolute -inset-x-1 inset-y-16 md:-inset-x-2 md:-inset-y-6 w-full max-w-[405px] h-[300px]">
+                    <div class="w-full h-full max-w-16xl mx-auto rounded-3xl opacity-30 blur-lg filter"></div>
+                  </div>
+                  <div class="relative">
+                    {workStep.value === 1 ?
+                      <img src="/ourwork1.png" class="w-full h-[300px] object-cover" alt="" />
+                        :
+                        workStep.value === 2 ?
+                          <img src="/ourwork3.png" class="w-full h-[300px] object-cover " alt="" />
+                          :
+                          <img src="/work3.jpg" class="w-full h-[300px] object-cover " alt="" />
+                    }
                   </div>
                 </div>
-                <div class="ml-20">
-                  {/* Work Image 2  */}
-                  <img src="/ourwork2.png" class={`absolute h-[385px] w-[570px] ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`} alt="" />
-                  <img src="/work22.jpg" class={`absolute h-[385px] w-[570px] ${workStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`} alt="" />
-                  <img src="/work33.jpg" class={`absolute h-[385px] w-[570px] ${workStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`} alt="" />
+                {/* Removed step counter on the top of the image for the first carousel as requested */}
+                <div class="mt-8 w-full max-w-[416px] text-center">
+                  {workStep.value === 1 ?
+                    <div class={`relative ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                      <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">Pandiani Corp</p>
+                      <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[200px]`}></div>
+                      <p class="mt-5 text-white leading-6 text-justify opensans-regular">Amet eu facilisi posuere ut at cras non ipsum proin nunc purus tellus ultricies velit elementum ut dui sed augue ultrices phasellus ullamcorper condimentum ut suspendisse viverra ornare sit venenatis</p>
+                    </div>
+                    :
+                    workStep.value === 2 ?
+                      <div class={`relative ${workStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                        <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">Caterpillar</p>
+                        <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[180px]`}></div>
+                        <p class="mt-5 text-white leading-6 text-justify opensans-regular">
+                          Nos asociamos con Caterpillar Inc. para optimizar sus operaciones de cadena de suministro, implementando soluciones logísticas innovadoras que mejoraron la eficiencia y redujeron los costos. Nuestra colaboración aseguró la distribución sin problemas de partes de maquinaria pesada, fortaleciendo la presencia en el mercado de Caterpillar y la satisfacción del cliente.
+                        </p>
+                      </div>
+                      :
+                      <div class={`relative ${workStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                        <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">John Deere</p>
+                        <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[190px]`}></div>
+                        <p class="mt-5 text-white leading-6 text-justify opensans-regular">
+                          John Deere & Company nos confió la optimización de sus procesos de producción, implementando soluciones avanzadas de automatización y principios de fabricación esbelta. Nuestros esfuerzos resultaron en ganancias significativas de productividad y ahorro de costos, posicionando a John Deere para un crecimiento sostenido y competitividad en el mercado de maquinaria agrícola.
+                        </p>
+                      </div>
+                  }
                 </div>
               </div>
-              <div class="ml-5 h-[350px] ">
-                <div>
-                  <div class={`absolute ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`}>
-                    <p class="text-[48px] font-bold playfair">Pandiani Corp</p>
-                    <div class={`mt-1 h-[3px] mr-6 !bg-[#E29D21] w-[305px]`}></div>
-                    <p class="mt-5 w-[416px] h-[144px]  leading-6">Amet eu facilisi posuere ut at cras non ipsum proin nunc purus tellus ultricies velit elementum ut dui sed augue ultrices phasellus ullamcorper condimentum ut suspendisse viverra ornare sit venenatis</p>
+
+              {/* Desktop View for Nuestro Trabajo */}
+              <div class="hidden lg:flex mt-16 items-center lg:items-start w-full">
+                <div class="w-full lg:w-[900px] h-auto lg:h-[480px] flex relative">
+                  <div class="relative w-1/2">
+                    <div class="relative h-[319px]">
+                      {workStep.value === 1 ?
+                        <img src="/ourwork1.png" class="w-full h-[319px] sm:w-[405px] object-cover mt-10 shadow-lg" alt="" />
+                        :
+                        workStep.value === 2 ?
+                          <img src="/ourwork3.png" class="w-full h-[319px] sm:w-[405px] object-cover mt-10 shadow-lg" alt="" />
+                          :
+                          <img src="/work3.jpg" class="w-full h-[319px] sm:w-[405px] object-cover mt-10 shadow-lg" alt="" />
+                      }
+                    </div>
                   </div>
-                  <div class={`absolute ${workStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`}>
-                    <p class="text-[48px] font-bold playfair">Caterpillar</p>
-                    <div class={`mt-1 h-[3px] mr-6 !bg-[#E29D21] w-[240px]`}></div>
-                    <p class="mt-5 w-[416px] h-[144px] leading-6">
-                      Nos asociamos con Caterpillar Inc. para optimizar sus operaciones de cadena de suministro, implementando soluciones logísticas innovadoras que mejoraron la eficiencia y redujeron los costos. Nuestra colaboración aseguró la distribución sin problemas de partes de maquinaria pesada, fortaleciendo la presencia en el mercado de Caterpillar y la satisfacción del cliente.
-                    </p>
-                  </div>
-                  <div class={`absolute ${workStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000`}>
-                    <p class="text-[48px] font-bold playfair">John Deere</p>
-                    <div class={`mt-1 h-[3px] mr-6 !bg-[#E29D21] w-[250px]`}></div>
-                    <p class="mt-5 w-[416px] h-[144px]  leading-6">
-                      John Deere & Company nos confió la optimización de sus procesos de producción, implementando soluciones avanzadas de automatización y principios de fabricación esbelta. Nuestros esfuerzos resultaron en ganancias significativas de productividad y ahorro de costos, posicionando a John Deere para un crecimiento sostenido y competitividad en el mercado de maquinaria agrícola.
-                    </p>
+                  <div class="ml-20 relative w-1/2">
+                    <div class="relative h-[385px]">
+                      {workStep.value === 1 ?
+                        <img src="/ourwork2.png" class="w-full h-[385px] sm:w-[570px] object-cover shadow-lg" alt="" />
+                        :
+                        workStep.value === 2 ?
+                          <img src="/work22.jpg" class="w-full h-[385px] sm:w-[570px] object-cover shadow-lg" alt="" />
+                          :
+                          <img src="/work33.jpg" class="w-full h-[385px] sm:w-[570px] object-cover shadow-lg" alt="" />
+                      }
+                    </div>
                   </div>
                 </div>
-                <div class="mt-[330px]">
-                  <Steps selectedStep={workStep.value} onClickStep={onClickStepWork} />
+                <div class="mt-10 lg:mt-0 lg:ml-5 h-auto lg:h-[350px] w-full lg:w-auto text-center lg:text-left">
+                  <div class="relative">
+                    {workStep.value === 1 ?
+                      <div class={`relative ${workStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                        <p class="text-4xl sm:text-5xl lg:text-[48px] font-bold playfair-regular text-white">Pandiani Corp</p>
+                        <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[305px]`}></div>
+                        <p class="mt-5 text-white leading-6 max-w-full lg:max-w-[416px] mx-auto lg:mx-0 text-justify opensans-regular">Amet eu facilisi posuere ut at cras non ipsum proin nunc purus tellus ultricies velit elementum ut dui sed augue ultrices phasellus ullamcorper condimentum ut suspendisse viverra ornare sit venenatis</p>
+                      </div>
+                      :
+                      workStep.value === 2 ?
+                        <div class={`relative ${workStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                          <p class="text-4xl sm:text-5xl lg:text-[48px] font-bold playfair-regular text-white">Caterpillar</p>
+                          <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[240px]`}></div>
+                          <p class="mt-5 text-white leading-6 max-w-full lg:max-w-[416px] mx-auto lg:mx-0 text-justify opensans-regular">
+                            Nos asociamos con Caterpillar Inc. para optimizar sus operaciones de cadena de suministro, implementando soluciones logísticas innovadoras que mejoraron la eficiencia y redujeron los costos. Nuestra colaboración aseguró la distribución sin problemas de partes de maquinaria pesada, fortaleciendo la presencia en el mercado de Caterpillar y la satisfacción del cliente.
+                          </p>
+                        </div>
+                        :
+                        <div class={`relative ${workStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                          <p class="text-4xl sm:text-5xl lg:text-[48px] font-bold playfair-regular text-white">John Deere</p>
+                          <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[250px]`}></div>
+                          <p class="mt-5 text-white leading-6 max-w-full lg:max-w-[416px] mx-auto lg:mx-0 text-justify opensans-regular">
+                            John Deere & Company nos confió la optimización de sus procesos de producción, implementando soluciones avanzadas de automatización y principios de fabricación esbelta. Nuestros esfuerzos resultaron en ganancias significativas de productividad y ahorro de costos, posicionando a John Deere para un crecimiento sostenido y competitividad en el mercado de maquinaria agrícola.
+                          </p>
+                        </div>
+                    }
+                  </div>
+                  {/* Removed step counter on the top of the image for the first carousel as requested */}
                 </div>
               </div>
             </div>
@@ -204,17 +352,14 @@ export default component$(() => {
 
 
           {/* EXPERTS SECTION */}
-          <div class="experts px-[90px] mt-24">
-            <div>
-              <TitleComponent name='Testimonials' isLong={false} />
-            </div>
-            <div class="services px-[90px] mt-10">
-              <p class="text-white font-bold text-[64px] text-center playfair">Testimoniales</p>
+          <div class="experts mt-16 md:px-[90px]">
+            <div class="services mt-10">
+              {/* Removed white testimoniales title as requested */}
               <section class="py-10">
-                <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="px-4 sm:px-0 mx-auto max-w-7xl">
                   <div class="flex flex-col items-center">
                     <div class="text-center">
-                      <h2 class="text-3xl font-bold text-white sm:text-4xl xl:text-5xl font-pj">Nuestros clientes de confianza dicen sobre nosotros</h2>
+                      <h2 class="text-3xl font-bold text-white sm:text-4xl xl:text-5xl font-pj playfair-regular">Nuestros clientes de confianza dicen sobre nosotros</h2>
                     </div>
 
                     <div class="relative mt-10 md:mt-24 md:order-2">
@@ -224,7 +369,7 @@ export default component$(() => {
 
                       <div class="relative grid max-w-lg grid-cols-1 gap-6 mx-auto md:max-w-none lg:gap-10 md:grid-cols-3">
                         <div class="flex flex-col overflow-hidden shadow-xl">
-                          <div class="flex flex-col justify-between flex-1 p-6 bg-white lg:py-8 lg:px-7 rounded-md">
+                          <div class="flex flex-col justify-between flex-1 p-6 bg-white lg:py-8 lg:px-7">
                             <div class="flex-1">
                               <div class="flex items-center">
                                 <svg class="w-5 h-5 text-[#FDB241]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -255,7 +400,7 @@ export default component$(() => {
                               </div>
 
                               <blockquote class="flex-1 mt-8">
-                                <p class="text-lg leading-relaxed text-gray-900 font-pj">“
+                                <p class="text-lg leading-relaxed text-gray-900 font-pj opensans-regular">"
                                   ELDCorp realmente transformó nuestras operaciones logísticas. Su experiencia y dedicación nos ayudaron a optimizar procesos, ahorrando tiempo y recursos.
                                 </p>
                               </blockquote>
@@ -264,15 +409,15 @@ export default component$(() => {
                             <div class="flex items-center mt-8">
                               <img class="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png" alt="" />
                               <div class="ml-4">
-                                <p class="text-base font-bold text-gray-900 font-pj">CEO</p>
-                                <p class="mt-0.5 text-sm font-pj text-gray-600">Chevron, U.S.A</p>
+                                <p class="text-base font-bold text-gray-900 font-pj inter-semibold">CEO</p>
+                                <p class="mt-0.5 text-sm font-pj text-gray-600 opensans-regular">Chevron, U.S.A</p>
                               </div>
                             </div>
                           </div>
                         </div>
 
                         <div class="flex flex-col overflow-hidden shadow-xl">
-                          <div class="flex flex-col justify-between flex-1 p-6 bg-white lg:py-8 lg:px-7 rounded-md">
+                          <div class="flex flex-col justify-between flex-1 p-6 bg-white lg:py-8 lg:px-7">
                             <div class="flex-1">
                               <div class="flex items-center">
                                 <svg class="w-5 h-5 text-[#FDB241]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -303,24 +448,24 @@ export default component$(() => {
                               </div>
 
                               <blockquote class="flex-1 mt-8">
-                                <p class="text-lg leading-relaxed text-gray-900 font-pj">“
+                                <p class="text-lg leading-relaxed text-gray-900 font-pj opensans-regular">"
                                   Trabajar con ELDCorp fue un cambio de juego para nuestra expansión internacional. Sus soluciones a medida y enfoque proactivo superaron nuestras expectativas
-                                  ”</p>
+                                  "</p>
                               </blockquote>
                             </div>
 
                             <div class="flex items-center mt-8">
                               <img class="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png" alt="" />
                               <div class="ml-4">
-                                <p class="text-base font-bold text-gray-900 font-pj">Head of Management</p>
-                                <p class="mt-0.5 text-sm font-pj text-gray-600">TechCrunch, Germany</p>
+                                <p class="text-base font-bold text-gray-900 font-pj inter-semibold">Head of Management</p>
+                                <p class="mt-0.5 text-sm font-pj text-gray-600 opensans-regular">TechCrunch, Germany</p>
                               </div>
                             </div>
                           </div>
                         </div>
 
                         <div class="flex flex-col overflow-hidden shadow-xl">
-                          <div class="flex flex-col justify-between flex-1 p-6 bg-white lg:py-8 lg:px-7 rounded-md">
+                          <div class="flex flex-col justify-between flex-1 p-6 bg-white lg:py-8 lg:px-7">
                             <div class="flex-1">
                               <div class="flex items-center">
                                 <svg class="w-5 h-5 text-[#FDB241]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -351,17 +496,17 @@ export default component$(() => {
                               </div>
 
                               <blockquote class="flex-1 mt-8">
-                                <p class="text-lg leading-relaxed text-gray-900 font-pj">“
+                                <p class="text-lg leading-relaxed text-gray-900 font-pj opensans-regular">"
                                   El compromiso de ELDCorp con la excelencia es incomparable. Entregaron soluciones innovadoras con profesionalismo y eficiencia, impulsando nuestro negocio hacia adelante.
-                                  ”</p>
+                                  "</p>
                               </blockquote>
                             </div>
 
                             <div class="flex items-center mt-8">
                               <img class="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female.png" alt="" />
                               <div class="ml-4">
-                                <p class="text-base font-bold text-gray-900 font-pj">Human Resources Manager</p>
-                                <p class="mt-0.5 text-sm font-pj text-gray-600">STAR, Argentina</p>
+                                <p class="text-base font-bold text-gray-900 font-pj inter-semibold">Human Resources Manager</p>
+                                <p class="mt-0.5 text-sm font-pj text-gray-600 opensans-regular">STAR, Argentina</p>
                               </div>
                             </div>
                           </div>
@@ -378,103 +523,148 @@ export default component$(() => {
           </div>
 
           {/* EXPERTS SECTION */}
-          <div id="services" class="px-[90px] mt-24">
-            <div>
+          <div id="services" class="mt-16 px-4 sm:px-0 md:px-[90px]">
+            <div class="hidden md:block">
               <TitleComponent name='WHAT WE OFFER' isLong={true} />
             </div>
-            <div class="services  mt-10">
-              <p class="text-left text-white font-bold text-[64px] playfair">Nuestros servicios</p>
-              <p class="text-white mt-8 leading-6">
+            <div class="md:hidden">
+              <TitleComponent name='NUESTROS SERVICIOS' isLong={true} />
+            </div>
+            <div class="services mt-10">
+              <p class="text-white mt-8 leading-6 text-center md:text-left max-w-full lg:max-w-[800px] mx-auto md:mx-0 text-justify opensans-regular">
                 Descubre nuestra gama de servicios diseñados para satisfacer las necesidades de tu negocio. Con una combinación de experiencia tradicional y soluciones innovadoras, estamos dedicados a ofrecer excelencia y generar un impacto significativo en diferentes industrias.
               </p>
-              <div class="flex mt-12 space-x-12">
-                <div class="relative w-[780px] h-[340px]">
+              {/* Mobile View for Services */}
+              <div class="flex flex-col items-center md:hidden mt-12 space-y-8">
+                <div class="relative w-full max-w-[780px] h-auto">
                   {serviceStep.value === 1 ?
-                    <img src="/serviceproducts.png" class={``} alt="" />
+                    <img src="/serviceproducts.png" class="w-full h-auto shadow-lg" alt="" />
                     :
                     serviceStep.value === 2 ?
-                      <img src="/serviceconsolidation.png" class={``} alt="" />
+                      <img src="/serviceconsolidation.png" class="w-full h-auto shadow-lg" alt="" />
                       :
-                      <img src="/servicealmacen.png" class={``} alt="" />
+                      <img src="/servicealmacen.png" class="w-full h-auto shadow-lg" alt="" />
+                  }
+                </div>
+                <div class="flex justify-center mt-8">
+                  <Steps selectedStep={serviceStep.value} onClickStep={onClickStepService} />
+                </div>
+                {serviceStep.value === 1 ?
+                  <div class={`w-full max-w-[444px] text-center ${serviceStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                    <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">Productos</p>
+                    <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[200px]`}></div>
+                    <p class="text-white mt-4 leading-6 text-justify opensans-regular">
+                      En ELDCorp, ofrecemos una amplia gama de piezas de maquinaria de alta calidad para satisfacer todas tus necesidades industriales. Nuestros productos están diseñados para garantizar el máximo rendimiento y durabilidad, ayudando a optimizar la eficiencia de tus operaciones.
+                    </p>
+                  </div>
+                  :
+                  serviceStep.value === 2 ?
+                    <div class={`w-full max-w-[444px] text-center ${serviceStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                      <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">Consolidación</p>
+                      <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[180px]`}></div>
+                      <p class="text-white mt-4 leading-6 text-justify opensans-regular">
+                        En ELDCorp, ofrecemos servicios de consolidación para optimizar tu cadena de suministro. Nuestro equipo se encarga de reunir y combinar tus envíos de piezas de maquinaria, reduciendo costos y mejorando la eficiencia logística.
+                      </p>
+                    </div>
+                    :
+                    <div class={`w-full max-w-[444px] text-center ${serviceStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                      <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">Almacén</p>
+                      <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[120px]`}></div>
+                      <p class="text-white mt-4 leading-6 text-justify opensans-regular">
+                        ELDCorp ofrece servicios de almacenamiento seguros y eficientes para tus piezas de maquinaria. Nuestras instalaciones están equipadas con la última tecnología en gestión de inventarios, asegurando que tus productos estén protegidos y disponibles cuando los necesites.
+                      </p>
+                    </div>
+                }
+              </div>
+
+              {/* Desktop View for Services */}
+              <div class="hidden md:flex mt-12 space-x-12">
+                <div class="relative w-[780px] h-[340px]">
+                  {serviceStep.value === 1 ?
+                    <img src="/serviceproducts.png" class="w-full h-full object-cover shadow-lg" alt="" />
+                    :
+                    serviceStep.value === 2 ?
+                      <img src="/serviceconsolidation.png" class="w-full h-full object-cover shadow-lg" alt="" />
+                      :
+                      <img src="/servicealmacen.png" class="w-full h-full object-cover shadow-lg" alt="" />
                   }
                   <div class="absolute bottom-12 left-8">
                     <Steps selectedStep={serviceStep.value} onClickStep={onClickStepService} />
                   </div>
                 </div>
                 {serviceStep.value === 1 ?
-                  <div class="w-[444px]">
-                    <p class="text-[42px] font-bold playfair">Productos</p>
-                    <p class="text-white mt-8 leading-6">
+                  <div class={`w-[444px] ${serviceStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                    <p class="text-[42px] font-bold playfair-regular text-white">Productos</p>
+                    <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[200px]`}></div>
+                    <p class="text-white mt-8 leading-6 text-justify opensans-regular">
                       En ELDCorp, ofrecemos una amplia gama de piezas de maquinaria de alta calidad para satisfacer todas tus necesidades industriales. Nuestros productos están diseñados para garantizar el máximo rendimiento y durabilidad, ayudando a optimizar la eficiencia de tus operaciones.
-
                     </p>
-                    <button class="bg-[#E29D21] w-[232px] h-[65px] mt-16 text-black font-bold rounded-md"> Ponte en contacto</button>
                   </div>
                   :
                   serviceStep.value === 2 ?
-                    <div class="w-[444px]">
-                      <p class="text-[42px] font-bold playfair">Consolidación</p>
-                      <p class="text-white mt-8 leading-6">
+                    <div class={`w-[444px] ${serviceStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                      <p class="text-[42px] font-bold playfair-regular text-white">Consolidación</p>
+                      <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[180px]`}></div>
+                      <p class="text-white mt-8 leading-6 text-justify opensans-regular">
                         En ELDCorp, ofrecemos servicios de consolidación para optimizar tu cadena de suministro. Nuestro equipo se encarga de reunir y combinar tus envíos de piezas de maquinaria, reduciendo costos y mejorando la eficiencia logística.
                       </p>
-                      <button class="bg-[#E29D21] w-[232px] h-[65px] mt-16 text-black font-bold rounded-md">Ponte en contacto</button>
                     </div>
                     :
-                    <div class="w-[444px]">
-                      <p class="text-[42px] font-bold playfair">Almacén</p>
-                      <p class="text-white mt-8 leading-6">
+                    <div class={`w-[444px] ${serviceStep.value === 3 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}>
+                      <p class="text-[42px] font-bold playfair-regular text-white">Almacén</p>
+                      <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[120px]`}></div>
+                      <p class="text-white mt-8 leading-6 text-justify opensans-regular">
                         ELDCorp ofrece servicios de almacenamiento seguros y eficientes para tus piezas de maquinaria. Nuestras instalaciones están equipadas con la última tecnología en gestión de inventarios, asegurando que tus productos estén protegidos y disponibles cuando los necesites.
                       </p>
-                      <button class="bg-[#E29D21] w-[232px] h-[65px] mt-16 text-black font-bold rounded-md">Ponte en contacto</button>
                     </div>
                 }
               </div>
             </div>
           </div>
 
-          <div class="form px-[90px] mt-24" id="contact">
+          <div class="form mt-16 px-4 sm:px-0 md:px-[90px]" id="contact">
             <div>
               <TitleComponent name='CONTACT US' isLong={true} />
             </div>
-            <div class="flex mt-12 space-x-4">
-              <div class="mr-8">
-                <img width={590} height={450} src="/sampleformimg.jpg" class=""></img>
+            <div class="flex flex-col lg:flex-row mt-12 space-y-8 lg:space-y-0 lg:space-x-4 items-center lg:items-start">
+              <div class="w-full lg:w-auto lg:mr-8">
+                <img width={590} height={450} src="/sampleformimg.jpg" class="shadow-lg w-full h-auto max-w-[590px] mx-auto"></img>
               </div>
-              <div class="flex-col w-1/2">
-                <p class="text-left text-white font-bold text-[64px] playfair">Ponte en contacto con nosotros</p>
-                <p class="text-white mt-8 leading-6">
+              <div class="flex flex-col w-full lg:w-1/2 text-center lg:text-left">
+                <p class="text-4xl sm:text-5xl lg:text-[64px] font-bold playfair-bold text-white">Ponte en contacto con nosotros</p>
+                <p class="text-white mt-8 leading-6 max-w-full lg:max-w-[800px] mx-auto lg:mx-0 text-justify opensans-regular">
                   Sinergiza completamente las relaciones de recursos gravosas a través de un nicho premier innovando dinámicamente en el estado del arte del servicio al cliente.
                 </p>
-                <div class="mt-10">
-                  <div class="w-[350px] flex justify-start mt-8">
-                    <div class="bg-white rounded-full mr-4 h-12 w-12 px-2 py-2">
+                <div class="mt-10 flex flex-col items-center lg:items-start space-y-8">
+                  <div class="w-full sm:w-[350px] flex justify-start sm:justify-start items-center mt-8">
+                    <div class="bg-white rounded-full mr-4 h-12 w-12 px-2 py-2 flex items-center justify-center">
                       <PhoneIcon></PhoneIcon>
                     </div>
-                    <div class="mt-2">
-                      <p class="text-left text-white text-[14px]">¿Tienes alguna pregunta?</p>
-                      <p class="text-[#E29D21] leading-6">
+                    <div class="text-left">
+                      <p class="text-white text-[14px] opensans-regular">¿Tienes alguna pregunta?</p>
+                      <p class="text-[#E29D21] leading-6 inter-semibold">
                         +01 569  896 654
                       </p>
                     </div>
                   </div>
-                  <div class="w-[350px] flex justify-start mt-8">
-                    <div class="bg-white rounded-full mr-4 h-12 w-12 px-2 py-2">
+                  <div class="w-full sm:w-[350px] flex justify-start sm:justify-start items-center mt-8">
+                    <div class="bg-white rounded-full mr-4 h-12 w-12 px-2 py-2 flex items-center justify-center">
                       <EmailIcon></EmailIcon>
                     </div>
-                    <div class="mt-2">
-                      <p class="text-left text-white text-[14px]">Escribir correo electrónico</p>
-                      <p class="text-[#E29D21] leading-6">
+                    <div class="text-left">
+                      <p class="text-white text-[14px] opensans-regular">Escribir correo electrónico</p>
+                      <p class="text-[#E29D21] leading-6 inter-semibold">
                         Info@whitecollar.com
                       </p>
                     </div>
                   </div>
-                  <div class="w-[350px] flex justify-start mt-8">
-                    <div class="bg-white rounded-full mr-4 h-12 w-12 px-2 py-2">
+                  <div class="w-full sm:w-[350px] flex justify-start sm:justify-start items-center mt-8">
+                    <div class="bg-white rounded-full mr-4 h-12 w-12 px-2 py-2 flex items-center justify-center">
                       <IcBaselineLocationOn></IcBaselineLocationOn>
                     </div>
-                    <div class="mt-2">
-                      <p class="text-left text-white text-[14px]">Visita en cualquier momento</p>
-                      <p class="text-[#E29D21] leading-6">
+                    <div class="text-left">
+                      <p class="text-white text-[14px] opensans-regular">Visita en cualquier momento</p>
+                      <p class="text-[#E29D21] leading-6 inter-semibold">
                         King Street,
                         Prior Lake, New York
                       </p>
@@ -483,37 +673,37 @@ export default component$(() => {
                 </div>
               </div>
             </div>
-            <p class="mt-14 text-center text-white font-bold text-[64px] playfair">¡Solicita una devolución de llamada!</p>
-            <div class="mt-10">
-              <div class="flex w-full space-x-10">
-                <div class="w-6/12">
-                  <input type="text" class="pl-4 rounded-md w-full h-[50px]" placeholder='Company Name' />
+            <p class="mt-14 text-center text-white font-bold text-4xl sm:text-5xl lg:text-[64px] playfair-regular">¡Solicita una llamada!</p>
+            <div class="mt-10 w-full max-w-4xl mx-auto">
+              <div class="flex flex-col sm:flex-row w-full space-y-8 sm:space-y-0 sm:space-x-10">
+                <div class="w-full sm:w-6/12">
+                  <input type="text" class="pl-4 w-full h-[50px]" placeholder='Company Name' />
                 </div>
-                <div class="w-6/12">
-                  <input type="text" class="pl-4 rounded-md w-full h-[50px]" placeholder='Email' />
+                <div class="w-full sm:w-6/12">
+                  <input type="text" class="pl-4 w-full h-[50px]" placeholder='Email' />
                 </div>
               </div>
-              <div class="flex w-full space-x-10 mt-8">
-                <div class="w-6/12">
-                  <input type="text" class="pl-4 rounded-md w-full h-[50px]" placeholder='Phone Number' />
+              <div class="flex flex-col sm:flex-row w-full space-y-8 sm:space-y-0 sm:space-x-10 mt-8">
+                <div class="w-full sm:w-6/12">
+                  <input type="text" class="pl-4 w-full h-[50px]" placeholder='Phone Number' />
                 </div>
-                <div class="w-6/12">
-                  <input type="text" class="pl-4 rounded-md w-full h-[50px]" placeholder='Subject' />
+                <div class="w-full sm:w-6/12">
+                  <input type="text" class="pl-4 w-full h-[50px]" placeholder='Subject' />
                 </div>
               </div>
               <div class="mt-8 w-full">
-                <textarea class="rounded-md w-full pl-4 pt-4" rows={10} placeholder='Message' />
+                <textarea class="w-full pl-4 pt-4" rows={10} placeholder='Message' />
               </div>
             </div>
-            <button class="bg-[#E29D21] w-[232px] h-[65px] mt-8 text-black font-bold rounded-md">Enviar</button>
+            <button class="bg-[#E29D21] w-full sm:w-[232px] h-[65px] mt-8 text-black font-bold text-base sm:text-lg rounded-none mx-auto block inter-semibold hover:bg-[#d18c1a] transition-colors duration-300">Enviar</button>
           </div>
 
           <div class="mb-20 h-[80px]"></div>
         </div>
       </div>
-    </>
+    </div>
   );
-});
+})
 
 export const head: DocumentHead = {
   title: 'ELD',
