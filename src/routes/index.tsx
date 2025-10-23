@@ -303,12 +303,12 @@ export default component$(() => {
                   </div>
                   <div class="relative">
                     {workStep.value === 1 ?
-                      <img src="/ourwork1.png" class="w-full h-[300px] object-cover" alt="" />
+                      <img src="public/ourwork1.png" class="w-full h-[300px] object-cover" alt="" />
                         :
                         workStep.value === 2 ?
-                          <img src="/ourwork3.png" class="w-full h-[300px] object-cover " alt="" />
+                          <img src="public/ourwork3.png" class="w-full h-[300px] object-cover " alt="" />
                           :
-                          <img src="/work3.jpg" class="w-full h-[300px] object-cover " alt="" />
+                          <img src="public/work3.jpg" class="w-full h-[300px] object-cover " alt="" />
                     }
                   </div>
                 </div>
