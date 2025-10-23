@@ -1,4 +1,5 @@
-import { $, QRL, QwikIntrinsicElements, component$, useSignal, useVisibleTask$, useTask$ } from '@builder.io/qwik';
+import { $, component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
+import type { QRL, QwikIntrinsicElements } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 
 import Hero from '~/components/starter/hero/hero';
@@ -42,10 +43,10 @@ const Counter = component$<CounterProps>(({ target, suffix = "", duration = 2000
 
 const MobileSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
   return (
-    <div className="flex items-center md:hidden">
-      <div onClick$={() => { onClickStep(1) }} className={`border-b cursor-pointer text-[18px] md:text-[18px] ${selectedStep === 1 ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10" : "border-b-white text-white"}  pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>01</div>
-      <div onClick$={() => { onClickStep(2) }} className={`border-b cursor-pointer  text-[18px] md:text-[18px] ${selectedStep === 2 ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10" : "border-b-white text-white "} pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>02</div>
-      <div onClick$={() => { onClickStep(3) }} className={`border-b cursor-pointer  text-[18px] md:text-[18px] ${selectedStep === 3 ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10" : "border-b-white text-white "} pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>03</div>
+    <div class="flex items-center md:hidden">
+      <div onClick$={() => { onClickStep(1) }} class={`border-b cursor-pointer text-[18px] md:text-[18px] ${selectedStep === 1 ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10" : "border-b-white text-white"}  pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>01</div>
+      <div onClick$={() => { onClickStep(2) }} class={`border-b cursor-pointer  text-[18px] md:text-[18px] ${selectedStep === 2 ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10" : "border-b-white text-white "} pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>02</div>
+      <div onClick$={() => { onClickStep(3) }} class={`border-b cursor-pointer  text-[18px] md:text-[18px] ${selectedStep === 3 ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10" : "border-b-white text-white "} pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}>03</div>
     </div>
   )
 })
@@ -62,37 +63,37 @@ const DesktopSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
 
 const MobileCounters = component$(() => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-8 py-8 px-8 md:hidden">
-      <div className="bg-white shadow-lg p-6 w-full max-w-[250px] flex opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in">
-        <div className="h-full w-1 bg-[#E29D21] mr-4"></div>
-        <div className="text-left">
-          <p className="text-[#111827] text-4xl font-bold inter-bold"><Counter target={8000} /></p>
-          <p className="text-[#111827] text-xl font-bold inter-semibold">Ítems</p>
-          <p className="text-[#111827] text-xl font-bold inter-semibold">suministrados</p>
+    <div class="flex flex-col items-center justify-center space-y-8 py-8 px-8 md:hidden">
+      <div class="bg-white shadow-lg p-6 w-full max-w-[250px] flex opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in">
+        <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
+        <div class="text-left">
+          <p class="text-[#111827] text-4xl font-bold inter-bold"><Counter target={8000} /></p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">Ítems</p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">suministrados</p>
         </div>
       </div>
-      <div className="bg-white shadow-lg p-6 w-full max-w-[250px] flex opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in" style="transition-delay: 0.1s">
-        <div className="h-full w-1 bg-[#E29D21] mr-4"></div>
-        <div className="text-left">
-          <p className="text-[#111827] text-4xl font-bold inter-bold"><Counter target={12000} suffix="+" /></p>
-          <p className="text-[#111827] text-xl font-bold inter-semibold">Libras </p>
-          <p className="text-[#111827] text-xl font-bold inter-semibold"> despachadas</p>
+      <div class="bg-white shadow-lg p-6 w-full max-w-[250px] flex opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in" style="transition-delay: 0.1s">
+        <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
+        <div class="text-left">
+          <p class="text-[#111827] text-4xl font-bold inter-bold"><Counter target={12000} suffix="+" /></p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">Libras </p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold"> despachadas</p>
         </div>
       </div>
-      <div className="bg-white shadow-lg p-6 w-full max-w-[250px] flex opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in" style="transition-delay: 0.2s">
-        <div className="h-full w-1 bg-[#E29D21] mr-4"></div>
-        <div className="text-left">
-          <p className="text-[#111827] text-4xl font-bold inter-bold"><Counter target={16} /></p>
-          <p className="text-[#111827] text-xl font-bold inter-semibold">Pies cúbicos</p>
-          <p className="text-[#111827] text-xl font-bold inter-semibold">despachados</p>
+      <div class="bg-white shadow-lg p-6 w-full max-w-[250px] flex opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in" style="transition-delay: 0.2s">
+        <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
+        <div class="text-left">
+          <p class="text-[#111827] text-4xl font-bold inter-bold"><Counter target={16} /></p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">Pies cúbicos</p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">despachados</p>
         </div>
       </div>
-      <div className="bg-white shadow-lg p-6 w-full max-w-[250px] flex opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in" style="transition-delay: 0.3s">
-        <div className="h-full w-1 bg-[#E29D21] mr-4"></div>
-        <div className="text-left">
-          <p className="text-[#111827] text-4xl font-bold inter-bold"><Counter target={21} suffix="+" /></p>
-          <p className="text-[#111827] text-xl font-bold inter-semibold">Clientes confían</p>
-          <p className="text-[#111827] text-xl font-bold inter-semibold">en nosotros</p>
+      <div class="bg-white shadow-lg p-6 w-full max-w-[250px] flex opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in" style="transition-delay: 0.3s">
+        <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
+        <div class="text-left">
+          <p class="text-[#111827] text-4xl font-bold inter-bold"><Counter target={21} suffix="+" /></p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">Clientes confían</p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">en nosotros</p>
         </div>
       </div>
     </div>
@@ -103,9 +104,9 @@ export const TitleComponent = component$(({ name, isLong, class: customClass }: 
   return (
     <>
       {/* Mobile View */}
-      <div className="flex flex-col items-center md:items-start md:hidden">
-        <p className={`uppercase text-[#E29D21] text-[18px] font-bold tracking-[3px] mb-2 mt-16 ${customClass || ''} inter-bold`}>{name}</p>
-        <div className={`h-[3px] mt-2 !bg-[#E29D21] ${isLong ? " w-[150px] sm:w-[250px]" : " w-[50px] sm:w-[60px]"}`}></div>
+      <div class="flex flex-col items-center md:items-start md:hidden">
+        <p class={`uppercase text-[#E29D21] text-[18px] font-bold tracking-[3px] mb-2 mt-16 ${customClass || ''} inter-bold`}>{name}</p>
+        <div class={`h-[3px] mt-2 !bg-[#E29D21] ${isLong ? " w-[150px] sm:w-[250px]" : " w-[50px] sm:w-[60px]"}`}></div>
       </div>
 
       {/* Desktop View */}
@@ -192,7 +193,7 @@ export default component$(() => {
   return (
     <div>
       <Hero />
-      <div className="pt-[800px] md:pt-[100vh]">
+      <div class="pt-[800px] md:pt-[100vh]">
         <div class="hidden md:flex flex-col sm:flex-row items-center justify-around counters min-h-[225px] w-full bg-white py-8 md:rounded-none shadow-lg md:px-[90px] mx-auto">
           <div class="border-l-4 pl-5 border-l-[#E29D21] mb-4 sm:mb-0 text-center sm:text-left">
             <div class="flex items-start">

@@ -1,4 +1,5 @@
-import { $, QRL, QwikIntrinsicElements, component$, useSignal } from '@builder.io/qwik';
+import { $, component$, useSignal } from '@builder.io/qwik';
+import type { QRL, QwikIntrinsicElements } from '@builder.io/qwik';
 import { TitleComponent } from '~/routes';
 
 interface StepsProps {
