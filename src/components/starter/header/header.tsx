@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <header class={styles.header + " relative z-[999999] "}>
       <div class={['container', styles.wrapper] + "  absolute flex items-center w-full justify-between !px-[70px] md:!px-[70px]"}>
-        <div class={styles.logo + " mx-auto"}>
+        <div class={styles.logo + " mx-auto md:mx-0"}>
           <a href="/" title="qwik">
             <img height={50} width={170} src="logo.png" />
           </a>
