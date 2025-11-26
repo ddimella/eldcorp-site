@@ -1,6 +1,7 @@
 import { $, component$, useSignal } from '@builder.io/qwik';
 import type { QRL, QwikIntrinsicElements } from '@builder.io/qwik';
 import { TitleComponent } from '~/routes';
+import { t } from '~/i18n';
 
 interface StepsProps {
   selectedStep: number;
@@ -10,9 +11,30 @@ interface StepsProps {
 const HeroSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
   return (
     <div class="flex items-center">
-      <div onClick$={() => { onClickStep(0); }} class={`border-b cursor-pointer tex-[18px] ${selectedStep === 0 ? "border-b-[#E29D21] text-[#E29D21] pb-10" : "border-b-white text-white"} pb-10 w-[60px] text-center font-bold`}>Start</div>
-      <div onClick$={() => { onClickStep(1); }} class={`border-b cursor-pointer tex-[18px] ${selectedStep === 1 ? "border-b-[#E29D21] text-[#E29D21] pb-10" : "border-b-white text-white"} pb-10 w-[60px] text-center font-bold`}>01</div>
-      <div onClick$={() => { onClickStep(2); }} class={`border-b cursor-pointer tex-[18px] ${selectedStep === 2 ? "border-b-[#E29D21] text-[#E29D21] pb-10" : "border-b-white text-white"} pb-10 w-[60px] text-center font-bold`}>02</div>
+      <div
+        onClick$={() => {
+          onClickStep(0);
+        }}
+        class={`border-b cursor-pointer tex-[18px] ${selectedStep === 0 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white'} pb-10 w-[60px] text-center font-bold`}
+      >
+        {t('hero.steps.start')}
+      </div>
+      <div
+        onClick$={() => {
+          onClickStep(1);
+        }}
+        class={`border-b cursor-pointer tex-[18px] ${selectedStep === 1 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white'} pb-10 w-[60px] text-center font-bold`}
+      >
+        01
+      </div>
+      <div
+        onClick$={() => {
+          onClickStep(2);
+        }}
+        class={`border-b cursor-pointer tex-[18px] ${selectedStep === 2 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white'} pb-10 w-[60px] text-center font-bold`}
+      >
+        02
+      </div>
     </div>
   );
 });
@@ -54,68 +76,128 @@ export default component$(() => {
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-transparent"></div>
       </div>
       {/* Mobile View */}
-      <div class={`absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 md:hidden transition-init ${homeStep.value === 0 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
+      <div
+        class={`absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 md:hidden transition-init ${
+          homeStep.value === 0 ? ' opacity-1' : 'opacity-0'
+        } transition-opacity ease-in-out duration-500`}
+      >
         <div class="flex flex-col items-center w-full max-w-md mx-auto">
-          <TitleComponent name='MÁS ALLÁ DE LOS LÍMITES' isLong={false} class="text-4xl inter-bold max-w-[240px] text-center mx-auto" />
+          <TitleComponent
+            name={t('hero.ribbon')}
+            isLong={true}
+            class="text-4xl inter-bold max-w-[280px] text-center mx-auto"
+          />
           <div class="mt-8 sm:mt-12 mb-8 sm:mb-12 text-center">
-            <p class="text-3xl sm:text-4xl transition-init playfair-regular !font-bold">Horizontes Industriales</p>
-            <p class="text-3xl sm:text-4xl transition-init playfair-regular mt-4 !font-bold ">Desbloqueados</p>
-            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base inter-semibold">CONTACTO</button>
+            <p class="text-3xl sm:text-4xl transition-init playfair-regular !font-bold">
+              {t('hero.title.line1')}
+            </p>
+            <p class="text-3xl sm:text-4xl transition-init playfair-regular mt-4 !font-bold ">
+              {t('hero.title.line2')}
+            </p>
+            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base inter-semibold">
+              {t('hero.cta')}
+            </button>
           </div>
           <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
         </div>
       </div>
       {/* Desktop View */}
-      <div class={`absolute top-[30%] pl-[70px] hidden md:block transition-init ${homeStep.value === 0 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
-        <TitleComponent name='MÁS ALLÁ DE LOS LÍMITES' isLong={false} />
+      <div
+        class={`absolute top-[30%] pl-[70px] hidden md:block transition-init ${
+          homeStep.value === 0 ? ' opacity-1' : 'opacity-0'
+        } transition-opacity ease-in-out duration-500`}
+      >
+        <TitleComponent name={t('hero.ribbon')} isLong={true} />
         <div class="mt-8 mb-[180px]">
-          <p class="text-[88px] transition-init playfair !font-bold">Horizontes Industriales</p>
-          <p class="text-[88px] transition-init playfair !font-bold">Desbloqueados</p>
-          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">Ponerse en Contacto</button>
+          <p class="text-[88px] transition-init playfair !font-bold">{t('hero.title.line1')}</p>
+          <p class="text-[88px] transition-init playfair !font-bold">{t('hero.title.line2')}</p>
+          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">
+            {t('hero.cta.long')}
+          </button>
         </div>
         <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
       </div>
       {/* Mobile View - Step 1 */}
-      <div class={`absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 md:hidden transition-init ${homeStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
+      <div
+        class={`absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 md:hidden transition-init ${
+          homeStep.value === 1 ? ' opacity-1' : 'opacity-0'
+        } transition-opacity ease-in-out duration-500`}
+      >
         <div class="flex flex-col items-center w-full max-w-md mx-auto">
-          <TitleComponent name='MAESTRÍA MECÁNICA' isLong={false} class="text-4xl inter-bold max-w-[240px] text-center mx-auto" />
+          <TitleComponent
+            name={t('hero.slide1.ribbon')}
+            isLong={false}
+            class="text-4xl inter-bold max-w-[240px] text-center mx-auto"
+          />
           <div class="mt-8 sm:mt-12 mb-8 sm:mb-12 text-center">
-            <p class="text-3xl sm:text-4xl transition-init playfair-regular !font-bold">Empoderando Industrias,</p>
-            <p class="text-3xl sm:text-4xl transition-init playfair-regular mt-4 !font-bold">Forjando Alianzas</p>
-            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base inter-semibold">CONTACTO</button>
+            <p class="text-3xl sm:text-4xl transition-init playfair-regular !font-bold">
+              {t('hero.slide1.title1')}
+            </p>
+            <p class="text-3xl sm:text-4xl transition-init playfair-regular mt-4 !font-bold">
+              {t('hero.slide1.title2')}
+            </p>
+            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base inter-semibold">
+              {t('hero.cta')}
+            </button>
           </div>
           <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
         </div>
       </div>
       {/* Desktop View - Step 1 */}
-      <div class={`absolute top-[30%] pl-[70px] hidden md:block transition-init ${homeStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
-        <TitleComponent name='MAESTRÍA MECÁNICA' isLong={false} />
+      <div
+        class={`absolute top-[30%] pl-[70px] hidden md:block transition-init ${
+          homeStep.value === 1 ? ' opacity-1' : 'opacity-0'
+        } transition-opacity ease-in-out duration-500`}
+      >
+        <TitleComponent name={t('hero.slide1.ribbon')} isLong={false} />
         <div class="mt-8 mb-[180px]">
-          <p class="font-bold text-[88px] transition-init playfair">Empoderando Industrias,</p>
-          <p class="font-bold text-[88px] transition-init playfair">Forjando Alianzas</p>
-          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">Ponerse en Contacto</button>
+          <p class="font-bold text-[88px] transition-init playfair">{t('hero.slide1.title1')}</p>
+          <p class="font-bold text-[88px] transition-init playfair">{t('hero.slide1.title2')}</p>
+          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">
+            {t('hero.cta.long')}
+          </button>
         </div>
         <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
       </div>
       {/* Mobile View - Step 2 */}
-      <div class={`absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 md:hidden transition-init ${homeStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
+      <div
+        class={`absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 md:hidden transition-init ${
+          homeStep.value === 2 ? ' opacity-1' : 'opacity-0'
+        } transition-opacity ease-in-out duration-500`}
+      >
         <div class="flex flex-col items-center w-full max-w-md mx-auto">
-          <TitleComponent name='PROYECTOS INDUSTRIALES' isLong={false} class="text-4xl inter-bold max-w-[240px] text-center mx-auto" />
+          <TitleComponent
+            name={t('hero.slide2.ribbon')}
+            isLong={false}
+            class="text-4xl inter-bold max-w-[240px] text-center mx-auto"
+          />
           <div class="mt-8 sm:mt-12 mb-8 sm:mb-12 text-center">
-            <p class="text-3xl sm:text-4xl transition-init playfair-regular !font-bold">Elevando Resultados de Proyectos</p>
-            <p class="text-3xl sm:text-4xl transition-init playfair-regular mt-4 text-transparent !font-bold">_</p>
-            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base inter-semibold">CONTACTO</button>
+            <p class="text-3xl sm:text-4xl transition-init playfair-regular !font-bold">
+              {t('hero.slide2.title1')}
+            </p>
+            <p class="text-3xl sm:text-4xl transition-init playfair-regular mt-4 text-transparent !font-bold">
+              {t('hero.slide2.title2')}
+            </p>
+            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base inter-semibold">
+              {t('hero.cta')}
+            </button>
           </div>
           <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
         </div>
       </div>
       {/* Desktop View - Step 2 */}
-      <div class={`absolute top-[30%] pl-[70px] hidden md:block transition-init ${homeStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-500`}>
-        <TitleComponent name='PROYECTOS INDUSTRIALES' isLong={false} />
+      <div
+        class={`absolute top-[30%] pl-[70px] hidden md:block transition-init ${
+          homeStep.value === 2 ? ' opacity-1' : 'opacity-0'
+        } transition-opacity ease-in-out duration-500`}
+      >
+        <TitleComponent name={t('hero.slide2.ribbon')} isLong={false} />
         <div class="mt-8 mb-[180px]">
-          <p class="font-bold text-[88px] transition-init playfair">Elevando Resultados de Proyectos</p>
-          <p class="font-bold text-[88px] transition-init playfair text-transparent">_</p>
-          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">Ponerse en Contacto</button>
+          <p class="font-bold text-[88px] transition-init playfair">{t('hero.slide2.title1')}</p>
+          <p class="font-bold text-[88px] transition-init playfair text-transparent">{t('hero.slide2.title2')}</p>
+          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">
+            {t('hero.cta.long')}
+          </button>
         </div>
         <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
       </div>
