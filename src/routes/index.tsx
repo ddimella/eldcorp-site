@@ -655,19 +655,19 @@ export default component$(() => {
                     </p>
                     <div>
                       <img
-                        src="public/ourwork1.jpeg"
+                        src="/ourwork1.jpeg"
                         class={`absolute ${
                           workStep.value === 1 ? ' opacity-1' : 'opacity-0'
                         } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`}
                       />
                       <img
-                        src="public/ourwork3.jpeg"
+                        src="/ourwork3.jpeg"
                         class={`absolute ${
                           workStep.value === 2 ? ' opacity-1' : 'opacity-0'
                         } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`}
                       />
                       <img
-                        src="public/work3.jpg"
+                        src="/work3.jpg"
                         class={`absolute ${
                           workStep.value === 3 ? ' opacity-1' : 'opacity-0'
                         } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`}
@@ -677,21 +677,21 @@ export default component$(() => {
                   <div class="ml-20">
                     {/* Work Image 2  */}
                     <img
-                      src="public/ourwork2.jpeg"
+                      src="/ourwork2.jpeg"
                       class={`absolute h-[385px] w-[570px] ${
                         workStep.value === 1 ? ' opacity-1' : 'opacity-0'
                       } transition-opacity ease-in-out duration-1000`}
                       alt=""
                     />
                     <img
-                      src="public/work22.jpg"
+                      src="/work22.jpg"
                       class={`absolute h-[385px] w-[570px] ${
                         workStep.value === 2 ? ' opacity-1' : 'opacity-0'
                       } transition-opacity ease-in-out duration-1000`}
                       alt=""
                     />
                     <img
-                      src="public/work33.jpeg"
+                      src="/work33.jpeg"
                       class={`absolute h-[385px] w-[570px] ${
                         workStep.value === 3 ? ' opacity-1' : 'opacity-0'
                       } transition-opacity ease-in-out duration-1000`}
