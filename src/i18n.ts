@@ -20,7 +20,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero principal (slide 0)
     'hero.ribbon': 'MÁS QUE UN PROVEEDOR',
-    'hero.title.line1': 'TU MEJOR ALIADO',
+    'hero.title.line1': 'EL MEJOR ALIADO',
     'hero.title.line2': 'PARA TU OPERACIÓN',
     'hero.cta': 'CONTACTO',
     'hero.cta.long': 'Ponerse en contacto',
@@ -28,19 +28,19 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero slide 1
     'hero.slide1.ribbon': 'MAESTRÍA MECÁNICA',
-    'hero.slide1.title1': 'Empoderando Industrias,',
-    'hero.slide1.title2': 'Forjando Alianzas',
+    'hero.slide1.title1': 'EXPERIENCIA',
+    'hero.slide1.title2': 'A TU DISPOSICIÓN',
 
     // Hero slide 2
     'hero.slide2.ribbon': 'PROYECTOS INDUSTRIALES',
-    'hero.slide2.title1': 'Elevando Resultados de Proyectos',
-    'hero.slide2.title2': '_',
+    'hero.slide2.title1': 'NUESTRA INFRAESTRUCTURA',
+    'hero.slide2.title2': 'TU FORTALEZA',
 
     // Contadores
     'counters.items.label1': 'Ítems',
     'counters.items.label2': 'suministrados',
-    'counters.weight.label1': 'Peso',
-    'counters.weight.label2': 'despachado',
+    'counters.weight.label1': 'Libras',
+    'counters.weight.label2': 'despachadas',
     'counters.volume.label1': 'Pies cúbicos',
     'counters.volume.label2': 'despachados',
     'counters.clients.label1': 'Clientes',
@@ -70,7 +70,7 @@ const translations: Record<Language, Record<string, string>> = {
     'work.ribbon.desktop': 'TRABAJOS SELECCIONADOS',
     'work.title': 'Nuestro Trabajo',
     'work.intro':
-      'Nuestro trabajo es facilitarle y permitir que Ud se dedique al suyo. Para ello contamos con:',
+      'Nuestro trabajo es facilitarle y permitir que ud se dedique al suyo. Para ello contamos con:',
 
     'work.step1.title': 'Personal especializado',
     'work.step1.text':
@@ -78,7 +78,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     'work.step2.title': 'Experiencia y conocimiento',
     'work.step2.text':
-      'Experiencia y conocimiento certificado para la atención y manejo de sus requerimientos de compras de repuestos, de componentes mayores nuevos y/o usados para Maquinarias Pesadas desde la identificación apropiada de los números de partes y piezas requeridas para la elaboración detallada de ofertas en la cual podemos presentarles opciones por disponibilidad, precio y demás detalles o información necesaria de las marcas reconocidas por su excelencia y calidad en el mercado con las que Ud pueda decidir su compra. Asesoramiento para la elaboración de stock sugeridos de partes según su Flota, operación y lugar de trabajo.',
+      'Experiencia y conocimiento certificado para la atención y manejo de sus requerimientos de compras de repuestos, de componentes mayores nuevos y/o usados para Maquinarias Pesadas desde la identificación apropiada de los números de partes y piezas requeridas para la elaboración detallada de ofertas en la cual podemos presentarles opciones por disponibilidad, precio y demás detalles o información necesaria de las marcas reconocidas por su excelencia y calidad en el mercado con las que ud pueda decidir su compra. Asesoramiento para la elaboración de stock sugeridos de partes según su Flota, operación y lugar de trabajo.',
 
     'work.step3.title': 'Logística y soluciones integrales',
     'work.step3.text':
@@ -89,7 +89,7 @@ const translations: Record<Language, Record<string, string>> = {
     'products.ribbon.desktop': 'PRODUCTS',
     'products.title': 'Productos',
     'products.intro':
-      'Próximamente encontrarás aquí las marcas y productos que ELDCorp ofrece al mercado. Esta sección mostrará los logos de nuestros aliados y fabricantes.',
+      'Próximamente encontrarás aquí las marcas y productos que ELD CORP ofrece al mercado. Esta sección mostrará los logos de nuestros aliados y fabricantes.',
     'products.logoPlaceholder': 'LOGO',
 
     // Servicios
@@ -188,7 +188,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     'why.title': 'Why us?',
     'why.point1':
-      'Eld Corp is an American company strategically located in the heart of international trade in Miami, Florida, USA.',
+      'ELD CORP is an American company strategically located in the heart of international trade in Miami, Florida, USA.',
     'why.point2':
       'Connections, partners and suppliers around the world allow us to develop feasible and profitable negotiations tailored to the requirements, operations and vision of our clients.',
     'why.point3':
@@ -224,7 +224,7 @@ const translations: Record<Language, Record<string, string>> = {
     'products.ribbon.desktop': 'PRODUCTS',
     'products.title': 'Products',
     'products.intro':
-      'Soon you will find here the brands and products that ELDCorp offers to the market. This section will showcase the logos of our partners and manufacturers.',
+      'Soon you will find here the brands and products that ELD CORP offers to the market. This section will showcase the logos of our partners and manufacturers.',
     'products.logoPlaceholder': 'LOGO',
 
     // Services

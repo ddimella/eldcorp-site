@@ -8,7 +8,7 @@ export default component$(() => {
     <header class={styles.header + ' relative z-[999999] '}>
       <div class={['container', styles.wrapper] + '  absolute flex items-center w-full justify-between !px-[70px] md:!px-[70px]'}>
         <div class={styles.logo + ' mx-auto md:mx-0'}>
-          <a href="/" title="ELD Corp">
+          <a href="/" title="ELD CORP">
             <img height={50} width={170} src="logo.png" />
           </a>
         </div>

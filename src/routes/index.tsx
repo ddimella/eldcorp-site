@@ -569,11 +569,11 @@ export default component$(() => {
                   </div>
                   <div class="relative">
                     {workStep.value === 1 ? (
-                      <img src="/ourwork1.jpeg" class="w-full h-[300px] object-cover" alt="" />
+                      <img src="/ourwork1.jpeg" class="w-full h-[300px] object-contain" alt="" />
                     ) : workStep.value === 2 ? (
-                      <img src="/ourwork3.jpeg" class="w-full h-[300px] object-cover " alt="" />
+                      <img src="/ourwork3.jpeg" class="w-full h-[300px] object-contain " alt="" />
                     ) : (
-                      <img src="/work3.jpg" class="w-full h-[300px] object-cover " alt="" />
+                      <img src="/work3.jpg" class="w-full h-[300px] object-contain " alt="" />
                     )}
                   </div>
                 </div>
@@ -658,19 +658,19 @@ export default component$(() => {
                         src="/ourwork1.jpeg"
                         class={`absolute ${
                           workStep.value === 1 ? ' opacity-1' : 'opacity-0'
-                        } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`}
+                        } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px] object-contain`}
                       />
                       <img
                         src="/ourwork3.jpeg"
                         class={`absolute ${
                           workStep.value === 2 ? ' opacity-1' : 'opacity-0'
-                        } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`}
+                        } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px] object-contain`}
                       />
                       <img
                         src="/work3.jpg"
                         class={`absolute ${
                           workStep.value === 3 ? ' opacity-1' : 'opacity-0'
-                        } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px]`}
+                        } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px] object-contain`}
                       />
                     </div>
                   </div>
@@ -680,21 +680,21 @@ export default component$(() => {
                       src="/ourwork2.jpeg"
                       class={`absolute h-[385px] w-[570px] ${
                         workStep.value === 1 ? ' opacity-1' : 'opacity-0'
-                      } transition-opacity ease-in-out duration-1000`}
+                      } transition-opacity ease-in-out duration-1000 object-contain`}
                       alt=""
                     />
                     <img
                       src="/work22.jpg"
                       class={`absolute h-[385px] w-[570px] ${
                         workStep.value === 2 ? ' opacity-1' : 'opacity-0'
-                      } transition-opacity ease-in-out duration-1000`}
+                      } transition-opacity ease-in-out duration-1000 object-contain`}
                       alt=""
                     />
                     <img
                       src="/work33.jpeg"
                       class={`absolute h-[385px] w-[570px] ${
                         workStep.value === 3 ? ' opacity-1' : 'opacity-0'
-                      } transition-opacity ease-in-out duration-1000`}
+                      } transition-opacity ease-in-out duration-1000 object-contain`}
                       alt=""
                     />
                   </div>
@@ -759,17 +759,19 @@ export default component$(() => {
               </p>
               <div class="mt-10 w-full overflow-hidden">
                 <div
-                  class="flex transition-transform duration-700 ease-out"
+                  class="flex transition-transform duration-300 ease-out"
                   style={`transform: translateX(-${productIndex.value * 25}%);`}
                 >
                   {[...productLogos, ...productLogos].map((logo, idx) => (
                     <div key={idx} class="flex-shrink-0 flex-grow-0 basis-1/4 flex justify-center">
-                      <img
-                        src={logo}
-                        alt={`Product logo ${idx + 1}`}
-                        class="h-16 sm:h-20 object-contain"
-                        loading="lazy"
-                      />
+                      <div class="bg-gray-500/20 rounded-lg p-2 w-24 h-24 sm:w-44 sm:h-44 flex items-center justify-center">
+                        <img
+                          src={logo}
+                          alt={`Product logo ${idx + 1}`}
+                          class={`object-contain ${idx % productLogos.length < 7 ? 'h-16 sm:h-24' : 'h-12 sm:h-20'}`}
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -803,13 +805,13 @@ export default component$(() => {
               <div class="flex flex-col items-center md:hidden mt-12 space-y-8">
                 <div class="relative w-full max-w-[780px] h-auto">
                   {serviceStep.value === 1 ? (
-                    <img src="/serviceproducts.jpeg" class="w-full h-auto shadow-lg" alt="" />
+                    <img src="/serviceproducts.jpeg" class="w-full h-auto shadow-lg object-contain" alt="" />
                   ) : serviceStep.value === 2 ? (
-                    <img src="/serviceconsolidation.jpeg" class="w-full h-auto shadow-lg" alt="" />
+                    <img src="/serviceconsolidation.jpeg" class="w-full h-auto shadow-lg object-contain" alt="" />
                   ) : serviceStep.value === 3 ? (
-                    <img src="/servicealmacen.jpeg" class="w-full h-auto shadow-lg" alt="" />
+                    <img src="/servicealmacen.jpeg" class="w-full h-auto shadow-lg object-contain" alt="" />
                   ) : (
-                    <img src="/serviceproducts.jpeg" class="w-full h-auto shadow-lg" alt="" />
+                    <img src="/serviceproducts.jpeg" class="w-full h-auto shadow-lg object-contain" alt="" />
                   )}
                 </div>
                 <div class="flex justify-center mt-8 md:hidden">
@@ -1117,17 +1119,6 @@ export default component$(() => {
                 <div class="mt-10 flex flex-col items-center lg:items-start space-y-8">
                   <div class="w-full sm:w-[350px] flex justify-start sm:justify-start items-start mt-4">
                     <div class="bg-white rounded-full mr-4 h-12 w-12 flex items-center justify-center">
-                      <PhoneIcon></PhoneIcon>
-                    </div>
-                    <div class="text-left mt-1">
-                      <p class="text-white text-[14px] opensans-regular">
-                        {t('contact.question')}
-                      </p>
-                      <p class="text-[#E29D21] leading-6 inter-semibold">{t('contact.phone')}</p>
-                    </div>
-                  </div>
-                  <div class="w-full sm:w-[350px] flex justify-start sm:justify-start items-start mt-4">
-                    <div class="bg-white rounded-full mr-4 h-12 w-12 flex items-center justify-center">
                       <EmailIcon></EmailIcon>
                     </div>
                     <div class="text-left mt-1">
@@ -1146,7 +1137,7 @@ export default component$(() => {
                       </p>
                       <div class="mt-4 w-full h-[200px] sm:h-[220px] rounded-md overflow-hidden shadow-lg">
                         <iframe
-                          title="ELDCorp Location"
+                          title="ELD CORP Location"
                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3588.787282229339!2d-80.3317026239619!3d25.83604810504361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9ba7b1a6c4f3b%3A0x3b4c9f4a3e41a4f1!2s6613%20NW%2084th%20Ave%2C%20Miami%2C%20FL%2033166%2C%20USA!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
                           width="100%"
                           height="100%"
@@ -1170,5 +1161,5 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'ELD',
+  title: 'ELD CORP',
 };
