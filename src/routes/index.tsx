@@ -989,7 +989,7 @@ export default component$(() => {
                 <img
                   width={590}
                   height={450}
-                  src="/sampleformimg.jpg"
+                  src="/sampleformimg.jpeg"
                   class="shadow-lg w-full h-auto max-w-[590px] mx-auto"
                 ></img>
               </div>
