@@ -1,7 +1,7 @@
-import { $, component$, useSignal } from '@builder.io/qwik';
-import type { QRL, QwikIntrinsicElements } from '@builder.io/qwik';
-import { TitleComponent } from '~/routes';
-import { t } from '~/i18n';
+import { $, component$, useSignal } from "@builder.io/qwik";
+import type { QRL, QwikIntrinsicElements } from "@builder.io/qwik";
+import { TitleComponent } from "~/routes";
+import { t } from "~/i18n";
 
 interface StepsProps {
   selectedStep: number;
@@ -15,15 +15,23 @@ const HeroSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
         onClick$={() => {
           onClickStep(0);
         }}
-        class={`border-b cursor-pointer tex-[18px] ${selectedStep === 0 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white'} pb-10 w-[60px] text-center font-bold`}
+        class={`border-b cursor-pointer tex-[18px] ${
+          selectedStep === 0
+            ? "border-b-[#E29D21] text-[#E29D21] pb-10"
+            : "border-b-white text-white"
+        } pb-10 w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
       >
-        {t('hero.steps.start')}
+        {t("hero.steps.start")}
       </div>
       <div
         onClick$={() => {
           onClickStep(1);
         }}
-        class={`border-b cursor-pointer tex-[18px] ${selectedStep === 1 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white'} pb-10 w-[60px] text-center font-bold`}
+        class={`border-b cursor-pointer tex-[18px] ${
+          selectedStep === 1
+            ? "border-b-[#E29D21] text-[#E29D21] pb-10"
+            : "border-b-white text-white"
+        } pb-10 w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
       >
         01
       </div>
@@ -31,7 +39,11 @@ const HeroSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
         onClick$={() => {
           onClickStep(2);
         }}
-        class={`border-b cursor-pointer tex-[18px] ${selectedStep === 2 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white'} pb-10 w-[60px] text-center font-bold`}
+        class={`border-b cursor-pointer tex-[18px] ${
+          selectedStep === 2
+            ? "border-b-[#E29D21] text-[#E29D21] pb-10"
+            : "border-b-white text-white"
+        } pb-10 w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
       >
         02
       </div>
@@ -39,15 +51,39 @@ const HeroSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
   );
 });
 
-export function MdiTwitter(props: QwikIntrinsicElements['svg'], key: string) {
+export function MdiTwitter(props: QwikIntrinsicElements["svg"], key: string) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 40 40" {...props} key={key}><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23"></path></svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50px"
+      height="50px"
+      viewBox="0 0 40 40"
+      {...props}
+      key={key}
+    >
+      <path
+        fill="currentColor"
+        d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23"
+      ></path>
+    </svg>
   );
 }
 
-export function MdiInstagram(props: QwikIntrinsicElements['svg'], key: string) {
+export function MdiInstagram(props: QwikIntrinsicElements["svg"], key: string) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 40 40" {...props} key={key}><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"></path></svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50px"
+      height="50px"
+      viewBox="0 0 40 40"
+      {...props}
+      key={key}
+    >
+      <path
+        fill="currentColor"
+        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"
+      ></path>
+    </svg>
   );
 }
 
@@ -60,43 +96,87 @@ export default component$(() => {
 
   return (
     <div class="">
-      <div class={`absolute ${homeStep.value === 0 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}>
-        <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo" src='/vid2.mp4'></video>
+      <div
+        class={`absolute ${
+          homeStep.value === 0 ? " opacity-1" : "opacity-0"
+        } transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}
+      >
+        <video
+          muted
+          autoplay
+          loop
+          class="w-full h-[100vh] object-cover blur"
+          id="myVideo"
+          src="/vid2.mp4"
+        ></video>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-transparent"></div>
       </div>
-      <div class={`absolute ${homeStep.value === 1 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}>
-        <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo2" src='/vid1.mp4'></video>
+      <div
+        class={`absolute ${
+          homeStep.value === 1 ? " opacity-1" : "opacity-0"
+        } transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}
+      >
+        <video
+          muted
+          autoplay
+          loop
+          class="w-full h-[100vh] object-cover blur"
+          id="myVideo2"
+          src="/vid1.mp4"
+        ></video>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-transparent"></div>
       </div>
-      <div class={`absolute ${homeStep.value === 2 ? " opacity-1" : "opacity-0"} transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}>
-        <video muted autoplay loop class="w-full h-[100vh] object-cover blur" id="myVideo3" src='/samplevid3.mp4'></video>
+      <div
+        class={`absolute ${
+          homeStep.value === 2 ? " opacity-1" : "opacity-0"
+        } transition-opacity ease-in-out duration-1000 w-full h-[100vh]`}
+      >
+        <video
+          muted
+          autoplay
+          loop
+          class="w-full h-[100vh] object-cover blur"
+          id="myVideo3"
+          src="/samplevid3.mp4"
+        ></video>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-transparent"></div>
       </div>
       {/* Mobile View */}
       <div
         class={`absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 md:hidden transition-init ${
-          homeStep.value === 0 ? ' opacity-1' : 'opacity-0'
+          homeStep.value === 0 ? " opacity-1" : "opacity-0"
         } transition-opacity ease-in-out duration-500`}
       >
         <div class="flex flex-col items-center w-full max-w-md mx-auto">
           <TitleComponent
-            name={t('hero.ribbon')}
+            name={t("hero.ribbon")}
             isLong={true}
             class="text-4xl inter-bold max-w-[280px] text-center mx-auto"
           />
           <div class="mt-8 sm:mt-12 mb-8 sm:mb-12 text-center">
             <p class="text-3xl sm:text-4xl transition-init playfair-regular !font-bold">
-              {t('hero.title.line1')}
+              {t("hero.title.line1")}
             </p>
             <p class="text-3xl sm:text-4xl transition-init playfair-regular mt-4 !font-bold ">
-              {t('hero.title.line2')}
+              {t("hero.title.line2")}
             </p>
-            <button class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base inter-semibold">
-              {t('hero.cta')}
-            </button>
+            <div class="mt-8 flex flex-col gap-4 items-center">
+              <a
+                href="#contact"
+                class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] flex items-center justify-center text-black font-semibold text-sm sm:text-base inter-semibold rounded-md"
+              >
+                {t("hero.cta")}
+              </a>
+              <a
+                href="#contact"
+                class="border-2 border-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] flex items-center justify-center text-[#E29D21] font-semibold text-sm sm:text-base inter-semibold rounded-md hover:bg-[#E29D21] hover:text-black transition-colors"
+              >
+                {t("hero.cta.secondary")}
+              </a>
+            </div>
           </div>
           <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
         </div>
@@ -104,40 +184,52 @@ export default component$(() => {
       {/* Desktop View */}
       <div
         class={`absolute top-[30%] pl-[70px] hidden md:block transition-init ${
-          homeStep.value === 0 ? ' opacity-1' : 'opacity-0'
+          homeStep.value === 0 ? " opacity-1" : "opacity-0"
         } transition-opacity ease-in-out duration-500`}
       >
-        <TitleComponent name={t('hero.ribbon')} isLong={true} />
+        <TitleComponent name={t("hero.ribbon")} isLong={true} />
         <div class="mt-8 mb-[180px]">
-          <p class="text-[88px] transition-init playfair !font-bold">{t('hero.title.line1')}</p>
-          <p class="text-[88px] transition-init playfair !font-bold">{t('hero.title.line2')}</p>
-          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">
-            {t('hero.cta.long')}
-          </button>
+          <p class="text-[88px] transition-init playfair !font-bold">
+            {t("hero.title.line1")}
+          </p>
+          <p class="text-[88px] transition-init playfair !font-bold">
+            {t("hero.title.line2")}
+          </p>
+          <div class="mt-10 flex gap-4">
+            <a
+              href="#contact"
+              class="bg-[#E29D21] w-[232px] h-[65px] flex items-center justify-center text-black font-bold rounded-md"
+            >
+              {t("hero.cta.long")}
+            </a>
+            <a
+              href="#contact"
+              class="border-2 border-[#E29D21] w-[232px] h-[65px] flex items-center justify-center text-[#E29D21] font-bold rounded-md hover:bg-[#E29D21] hover:text-black transition-colors"
+            >
+              {t("hero.cta.secondary")}
+            </a>
+          </div>
         </div>
         <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
       </div>
       {/* Mobile View - Step 1 */}
       <div
         class={`absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 md:hidden transition-init ${
-          homeStep.value === 1 ? ' opacity-1' : 'opacity-0'
+          homeStep.value === 1 ? " opacity-1" : "opacity-0"
         } transition-opacity ease-in-out duration-500`}
       >
         <div class="flex flex-col items-center w-full max-w-md mx-auto">
           <TitleComponent
-            name={t('hero.slide1.ribbon')}
+            name={t("hero.slide1.ribbon")}
             isLong={false}
             class="text-4xl inter-bold max-w-[240px] text-center mx-auto"
           />
           <div class="mt-8 sm:mt-12 mb-8 sm:mb-12 text-center">
             <p class="text-3xl sm:text-4xl transition-init playfair-regular !font-bold">
-              {t('hero.slide1.title1')}
-            </p>
-            <p class="text-3xl sm:text-4xl transition-init playfair-regular mt-4 !font-bold">
-              {t('hero.slide1.title2')}
+              {t("hero.subtitle")}
             </p>
             <button class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base inter-semibold">
-              {t('hero.cta')}
+              {t("hero.cta")}
             </button>
           </div>
           <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
@@ -146,40 +238,49 @@ export default component$(() => {
       {/* Desktop View - Step 1 */}
       <div
         class={`absolute top-[30%] pl-[70px] hidden md:block transition-init ${
-          homeStep.value === 1 ? ' opacity-1' : 'opacity-0'
+          homeStep.value === 1 ? " opacity-1" : "opacity-0"
         } transition-opacity ease-in-out duration-500`}
       >
-        <TitleComponent name={t('hero.slide1.ribbon')} isLong={false} />
+        <TitleComponent name={t("hero.slide1.ribbon")} isLong={false} />
         <div class="mt-8 mb-[180px]">
-          <p class="font-bold text-[88px] transition-init playfair">{t('hero.slide1.title1')}</p>
-          <p class="font-bold text-[88px] transition-init playfair">{t('hero.slide1.title2')}</p>
-          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">
-            {t('hero.cta.long')}
-          </button>
+          <p class="font-bold text-[88px] transition-init playfair">
+            {t("hero.subtitle")}
+          </p>
+          <div class="mt-10 flex gap-4">
+            <a
+              href="#contact"
+              class="bg-[#E29D21] w-[232px] h-[65px] flex items-center justify-center text-black font-bold rounded-md"
+            >
+              {t("hero.cta.long")}
+            </a>
+            <a
+              href="#contact"
+              class="border-2 border-[#E29D21] w-[232px] h-[65px] flex items-center justify-center text-[#E29D21] font-bold rounded-md hover:bg-[#E29D21] hover:text-black transition-colors"
+            >
+              {t("hero.cta.secondary")}
+            </a>
+          </div>
         </div>
         <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
       </div>
       {/* Mobile View - Step 2 */}
       <div
         class={`absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 md:hidden transition-init ${
-          homeStep.value === 2 ? ' opacity-1' : 'opacity-0'
+          homeStep.value === 2 ? " opacity-1" : "opacity-0"
         } transition-opacity ease-in-out duration-500`}
       >
         <div class="flex flex-col items-center w-full max-w-md mx-auto">
           <TitleComponent
-            name={t('hero.slide2.ribbon')}
+            name={t("hero.slide2.ribbon")}
             isLong={false}
             class="text-4xl inter-bold max-w-[240px] text-center mx-auto"
           />
           <div class="mt-8 sm:mt-12 mb-8 sm:mb-12 text-center">
             <p class="text-3xl sm:text-4xl transition-init playfair-regular !font-bold">
-              {t('hero.slide2.title1')}
-            </p>
-            <p class="text-3xl sm:text-4xl transition-init playfair-regular mt-4 text-transparent !font-bold">
-              {t('hero.slide2.title2')}
+              {t("hero.experience")}
             </p>
             <button class="bg-[#E29D21] w-[160px] sm:w-[200px] h-[50px] sm:h-[50px] mt-8 sm:mt-12 mb-24 text-black font-semibold text-sm sm:text-base inter-semibold">
-              {t('hero.cta')}
+              {t("hero.cta")}
             </button>
           </div>
           <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
@@ -188,16 +289,28 @@ export default component$(() => {
       {/* Desktop View - Step 2 */}
       <div
         class={`absolute top-[30%] pl-[70px] hidden md:block transition-init ${
-          homeStep.value === 2 ? ' opacity-1' : 'opacity-0'
+          homeStep.value === 2 ? " opacity-1" : "opacity-0"
         } transition-opacity ease-in-out duration-500`}
       >
-        <TitleComponent name={t('hero.slide2.ribbon')} isLong={false} />
+        <TitleComponent name={t("hero.slide2.ribbon")} isLong={false} />
         <div class="mt-8 mb-[180px]">
-          <p class="font-bold text-[88px] transition-init playfair">{t('hero.slide2.title1')}</p>
-          <p class="font-bold text-[88px] transition-init playfair text-transparent">{t('hero.slide2.title2')}</p>
-          <button class="bg-[#E29D21] w-[232px] h-[65px] mt-10 text-black font-bold rounded-md">
-            {t('hero.cta.long')}
-          </button>
+          <p class="font-bold text-[88px] transition-init playfair">
+            {t("hero.experience")}
+          </p>
+          <div class="mt-10 flex gap-4">
+            <a
+              href="#contact"
+              class="bg-[#E29D21] w-[232px] h-[65px] flex items-center justify-center text-black font-bold rounded-md"
+            >
+              {t("hero.cta.long")}
+            </a>
+            <a
+              href="#contact"
+              class="border-2 border-[#E29D21] w-[232px] h-[65px] flex items-center justify-center text-[#E29D21] font-bold rounded-md hover:bg-[#E29D21] hover:text-black transition-colors"
+            >
+              {t("hero.cta.secondary")}
+            </a>
+          </div>
         </div>
         <HeroSteps selectedStep={homeStep.value} onClickStep={onClickStep} />
       </div>

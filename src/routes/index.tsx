@@ -1,9 +1,9 @@
-import { $, component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
-import type { QRL, QwikIntrinsicElements } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import type { QRL, QwikIntrinsicElements } from "@builder.io/qwik";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
-import Hero from '~/components/starter/hero/hero';
-import { t } from '~/i18n';
+import Hero from "~/components/starter/hero/hero";
+import { t } from "~/i18n";
 
 interface StepsProps {
   selectedStep: number;
@@ -18,7 +18,9 @@ const MobileSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
           onClickStep(1);
         }}
         class={`border-b cursor-pointer text-[18px] md:text-[18px] ${
-          selectedStep === 1 ? 'border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10' : 'border-b-white text-white'
+          selectedStep === 1
+            ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10"
+            : "border-b-white text-white"
         }  pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
       >
         01
@@ -28,7 +30,9 @@ const MobileSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
           onClickStep(2);
         }}
         class={`border-b cursor-pointer  text-[18px] md:text-[18px] ${
-          selectedStep === 2 ? 'border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10' : 'border-b-white text-white '
+          selectedStep === 2
+            ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10"
+            : "border-b-white text-white "
         } pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
       >
         02
@@ -38,7 +42,9 @@ const MobileSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
           onClickStep(3);
         }}
         class={`border-b cursor-pointer  text-[18px] md:text-[18px] ${
-          selectedStep === 3 ? 'border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10' : 'border-b-white text-white '
+          selectedStep === 3
+            ? "border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10"
+            : "border-b-white text-white "
         } pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
       >
         03
@@ -55,7 +61,9 @@ const DesktopSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
           onClickStep(1);
         }}
         class={`border-b cursor-pointer text-[18px] ${
-          selectedStep === 1 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white'
+          selectedStep === 1
+            ? "border-b-[#E29D21] text-[#E29D21] pb-10"
+            : "border-b-white text-white"
         }  pb-10 w-[60px] text-center font-bold`}
       >
         01
@@ -65,7 +73,9 @@ const DesktopSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
           onClickStep(2);
         }}
         class={`border-b cursor-pointer  text-[18px] ${
-          selectedStep === 2 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white '
+          selectedStep === 2
+            ? "border-b-[#E29D21] text-[#E29D21] pb-10"
+            : "border-b-white text-white "
         } pb-10 w-[60px] text-center font-bold`}
       >
         02
@@ -75,104 +85,12 @@ const DesktopSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
           onClickStep(3);
         }}
         class={`border-b cursor-pointer  text-[18px] ${
-          selectedStep === 3 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white '
+          selectedStep === 3
+            ? "border-b-[#E29D21] text-[#E29D21] pb-10"
+            : "border-b-white text-white "
         } pb-10 w-[60px] text-center font-bold`}
       >
         03
-      </div>
-    </div>
-  );
-});
-
-const MobileServiceSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
-  return (
-    <div class="flex items-center md:hidden">
-      <div
-        onClick$={() => {
-          onClickStep(1);
-        }}
-        class={`border-b cursor-pointer text-[18px] md:text-[18px] ${
-          selectedStep === 1 ? 'border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10' : 'border-b-white text-white'
-        }  pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
-      >
-        01
-      </div>
-      <div
-        onClick$={() => {
-          onClickStep(2);
-        }}
-        class={`border-b cursor-pointer  text-[18px] md:text-[18px] ${
-          selectedStep === 2 ? 'border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10' : 'border-b-white text-white '
-        } pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
-      >
-        02
-      </div>
-      <div
-        onClick$={() => {
-          onClickStep(3);
-        }}
-        class={`border-b cursor-pointer  text-[18px] md:text-[18px] ${
-          selectedStep === 3 ? 'border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10' : 'border-b-white text-white '
-        } pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
-      >
-        03
-      </div>
-      <div
-        onClick$={() => {
-          onClickStep(4);
-        }}
-        class={`border-b cursor-pointer  text-[18px] md:text-[18px] ${
-          selectedStep === 4 ? 'border-b-[#E29D21] text-[#E29D21] pb-10 md:pb-10' : 'border-b-white text-white '
-        } pb-10 md:pb-10 w-[80px] md:w-[60px] text-center font-bold inter-semibold hover:text-[#E29D21] transition-colors duration-300`}
-      >
-        04
-      </div>
-    </div>
-  );
-});
-
-const DesktopServiceSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
-  return (
-    <div class="hidden md:flex items-center">
-      <div
-        onClick$={() => {
-          onClickStep(1);
-        }}
-        class={`border-b cursor-pointer text-[18px] ${
-          selectedStep === 1 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white'
-        }  pb-10 w-[60px] text-center font-bold`}
-      >
-        01
-      </div>
-      <div
-        onClick$={() => {
-          onClickStep(2);
-        }}
-        class={`border-b cursor-pointer  text-[18px] ${
-          selectedStep === 2 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white '
-        } pb-10 w-[60px] text-center font-bold`}
-      >
-        02
-      </div>
-      <div
-        onClick$={() => {
-          onClickStep(3);
-        }}
-        class={`border-b cursor-pointer  text-[18px] ${
-          selectedStep === 3 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white '
-        } pb-10 w-[60px] text-center font-bold`}
-      >
-        03
-      </div>
-      <div
-        onClick$={() => {
-          onClickStep(4);
-        }}
-        class={`border-b cursor-pointer  text-[18px] ${
-          selectedStep === 4 ? 'border-b-[#E29D21] text-[#E29D21] pb-10' : 'border-b-white text-white '
-        } pb-10 w-[60px] text-center font-bold`}
-      >
-        04
       </div>
     </div>
   );
@@ -185,8 +103,12 @@ const MobileCounters = component$(() => {
         <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
         <div class="text-left">
           <p class="text-[#111827] text-4xl font-bold inter-bold">106120</p>
-          <p class="text-[#111827] text-xl font-bold inter-semibold">{t('counters.items.label1')}</p>
-          <p class="text-[#111827] text-xl font-bold inter-semibold">{t('counters.items.label2')}</p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">
+            {t("counters.items.label1")}
+          </p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">
+            {t("counters.items.label2")}
+          </p>
         </div>
       </div>
       <div
@@ -196,8 +118,12 @@ const MobileCounters = component$(() => {
         <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
         <div class="text-left">
           <p class="text-[#111827] text-4xl font-bold inter-bold">129258,25</p>
-          <p class="text-[#111827] text-xl font-bold inter-semibold">{t('counters.weight.label1')}</p>
-          <p class="text-[#111827] text-xl font-bold inter-semibold">{t('counters.weight.label2')}</p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">
+            {t("counters.weight.label1")}
+          </p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">
+            {t("counters.weight.label2")}
+          </p>
         </div>
       </div>
       <div
@@ -207,8 +133,12 @@ const MobileCounters = component$(() => {
         <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
         <div class="text-left">
           <p class="text-[#111827] text-4xl font-bold inter-bold">9650,73</p>
-          <p class="text-[#111827] text-xl font-bold inter-semibold">{t('counters.volume.label1')}</p>
-          <p class="text-[#111827] text-xl font-bold inter-semibold">{t('counters.volume.label2')}</p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">
+            {t("counters.volume.label1")}
+          </p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">
+            {t("counters.volume.label2")}
+          </p>
         </div>
       </div>
       <div
@@ -218,8 +148,12 @@ const MobileCounters = component$(() => {
         <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
         <div class="text-left">
           <p class="text-[#111827] text-4xl font-bold inter-bold">130+</p>
-          <p class="text-[#111827] text-xl font-bold inter-semibold">{t('counters.clients.label1')}</p>
-          <p class="text-[#111827] text-xl font-bold inter-semibold">{t('counters.clients.label2')}</p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">
+            {t("counters.clients.label1")}
+          </p>
+          <p class="text-[#111827] text-xl font-bold inter-semibold">
+            {t("counters.clients.label2")}
+          </p>
         </div>
       </div>
     </div>
@@ -227,21 +161,29 @@ const MobileCounters = component$(() => {
 });
 
 export const TitleComponent = component$(
-  ({ name, isLong, class: customClass }: { name: string; isLong: boolean; class?: string }) => {
+  ({
+    name,
+    isLong,
+    class: customClass,
+  }: {
+    name: string;
+    isLong: boolean;
+    class?: string;
+  }) => {
     return (
       <>
         {/* Mobile View */}
         <div class="flex flex-col items-center md:items-start md:hidden">
           <p
             class={`uppercase text-[#E29D21] text-[18px] font-bold tracking-[3px] mb-2 mt-16 ${
-              customClass || ''
+              customClass || ""
             } inter-bold`}
           >
             {name}
           </p>
           <div
             class={`h-[3px] mt-2 !bg-[#E29D21] ${
-              isLong ? ' w-[150px] sm:w-[250px]' : ' w-[50px] sm:w-[60px]'
+              isLong ? " w-[150px] sm:w-[250px]" : " w-[50px] sm:w-[60px]"
             }`}
           ></div>
         </div>
@@ -250,12 +192,12 @@ export const TitleComponent = component$(
         <div class="hidden md:flex items-center mt-16">
           <div
             class={`h-[3px] mr-6 !bg-[#E29D21] ${
-              isLong ? ' w-[305px]' : ' w-[72px]'
+              isLong ? " w-[305px]" : " w-[72px]"
             }`}
           ></div>
           <p
             class={`uppercase text-[#E29D21] text-[18px] font-bold tracking-[6px] ${
-              customClass || ''
+              customClass || ""
             } inter-bold`}
           >
             {name}
@@ -263,10 +205,10 @@ export const TitleComponent = component$(
         </div>
       </>
     );
-  },
+  }
 );
 
-export function PhoneIcon(props: QwikIntrinsicElements['svg'], key: string) {
+export function PhoneIcon(props: QwikIntrinsicElements["svg"], key: string) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -283,7 +225,7 @@ export function PhoneIcon(props: QwikIntrinsicElements['svg'], key: string) {
   );
 }
 
-export function EmailIcon(props: QwikIntrinsicElements['svg'], key: string) {
+export function EmailIcon(props: QwikIntrinsicElements["svg"], key: string) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -300,7 +242,10 @@ export function EmailIcon(props: QwikIntrinsicElements['svg'], key: string) {
   );
 }
 
-export function IcBaselineLocationOn(props: QwikIntrinsicElements['svg'], key: string) {
+export function IcBaselineLocationOn(
+  props: QwikIntrinsicElements["svg"],
+  key: string
+) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -317,7 +262,7 @@ export function IcBaselineLocationOn(props: QwikIntrinsicElements['svg'], key: s
   );
 }
 
-export function MdiTools(props: QwikIntrinsicElements['svg'], key: string) {
+export function MdiTools(props: QwikIntrinsicElements["svg"], key: string) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -335,7 +280,7 @@ export function MdiTools(props: QwikIntrinsicElements['svg'], key: string) {
   );
 }
 
-export function Globe(props: QwikIntrinsicElements['svg'], key: string) {
+export function Globe(props: QwikIntrinsicElements["svg"], key: string) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -353,7 +298,7 @@ export function Globe(props: QwikIntrinsicElements['svg'], key: string) {
   );
 }
 
-export function Handshake(props: QwikIntrinsicElements['svg'], key: string) {
+export function Handshake(props: QwikIntrinsicElements["svg"], key: string) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -373,51 +318,46 @@ export function Handshake(props: QwikIntrinsicElements['svg'], key: string) {
 
 export default component$(() => {
   const workStep = useSignal(1);
-  const serviceStep = useSignal(1);
 
   const productIndex = useSignal(0);
   const productLogos = [
-    '/productLogo1.png',
-    '/productLogo2.png',
-    '/productLogo3.png',
-    '/productLogo4.png',
-    '/productLogo5.png',
-    '/productLogo6.png',
-    '/productLogo7.png',
-    '/productLogo8.png',
-    '/productLogo9.png',
-    '/productLogo10.png',
-    '/productLogo11.png',
+    "/productLogo1.png",
+    "/productLogo2.png",
+    "/productLogo3.png",
+    "/productLogo4.png",
+    "/productLogo5.png",
+    "/productLogo6.png",
+    "/productLogo7.png",
+    "/productLogo8.png",
+    "/productLogo9.png",
+    "/productLogo10.png",
+    "/productLogo11.png",
   ];
 
   const onClickStepWork = $((step: number) => {
     workStep.value = step;
   });
 
-  const onClickStepService = $((step: number) => {
-    serviceStep.value = step;
-  });
-
   // Mobile fade-in animation observer + automatic product carousel
   useVisibleTask$(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            (entry.target as HTMLElement).classList.add('visible');
+            (entry.target as HTMLElement).classList.add("visible");
           }
         });
       },
       {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-      },
+        rootMargin: "0px 0px -50px 0px",
+      }
     );
 
     // Observe all elements with mobile-fade-in class
-    const elements = document.querySelectorAll('.mobile-fade-in');
+    const elements = document.querySelectorAll(".mobile-fade-in");
     elements.forEach((el) => observer.observe(el));
 
     // Automatic horizontal carousel: advance one logo at a time
@@ -440,12 +380,14 @@ export default component$(() => {
             <div class="flex items-start">
               <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
               <div>
-                <p class="text-[#111827] text-3xl sm:text-4xl lg:text-[48px] font-bold inter-bold">106120</p>
-                <p class="text-[#111827] text-lg sm:text-xl lg:text-[24px] font-bold inter-semibold">
-                  {t('counters.items.label1')}
+                <p class="text-[#111827] text-3xl sm:text-4xl lg:text-[48px] font-bold inter-bold">
+                  106120
                 </p>
                 <p class="text-[#111827] text-lg sm:text-xl lg:text-[24px] font-bold inter-semibold">
-                  {t('counters.items.label2')}
+                  {t("counters.items.label1")}
+                </p>
+                <p class="text-[#111827] text-lg sm:text-xl lg:text-[24px] font-bold inter-semibold">
+                  {t("counters.items.label2")}
                 </p>
               </div>
             </div>
@@ -454,12 +396,14 @@ export default component$(() => {
             <div class="flex items-start">
               <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
               <div>
-                <p class="text-[#111827] text-[48px] font-bold inter-bold">129258,25</p>
-                <p class="text-[#111827] text-[24px] font-bold inter-semibold">
-                  {t('counters.weight.label1')}
+                <p class="text-[#111827] text-[48px] font-bold inter-bold">
+                  129258,25
                 </p>
                 <p class="text-[#111827] text-[24px] font-bold inter-semibold">
-                  {t('counters.weight.label2')}
+                  {t("counters.weight.label1")}
+                </p>
+                <p class="text-[#111827] text-[24px] font-bold inter-semibold">
+                  {t("counters.weight.label2")}
                 </p>
               </div>
             </div>
@@ -468,12 +412,14 @@ export default component$(() => {
             <div class="flex items-start">
               <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
               <div>
-                <p class="text-[#111827] text-[48px] font-bold inter-bold">9650,73</p>
-                <p class="text-[#111827] text-[24px] font-bold inter-semibold">
-                  {t('counters.volume.label1')}
+                <p class="text-[#111827] text-[48px] font-bold inter-bold">
+                  9650,73
                 </p>
                 <p class="text-[#111827] text-[24px] font-bold inter-semibold">
-                  {t('counters.volume.label2')}
+                  {t("counters.volume.label1")}
+                </p>
+                <p class="text-[#111827] text-[24px] font-bold inter-semibold">
+                  {t("counters.volume.label2")}
                 </p>
               </div>
             </div>
@@ -482,12 +428,14 @@ export default component$(() => {
             <div class="flex items-start">
               <div class="h-full w-1 bg-[#E29D21] mr-4"></div>
               <div>
-                <p class="text-[#111827] text-[48px] font-bold inter-bold">130+</p>
-                <p class="text-[#111827] text-[24px] font-bold inter-semibold">
-                  {t('counters.clients.label1')}
+                <p class="text-[#111827] text-[48px] font-bold inter-bold">
+                  130+
                 </p>
                 <p class="text-[#111827] text-[24px] font-bold inter-semibold">
-                  {t('counters.clients.label2')}
+                  {t("counters.clients.label1")}
+                </p>
+                <p class="text-[#111827] text-[24px] font-bold inter-semibold">
+                  {t("counters.clients.label2")}
                 </p>
               </div>
             </div>
@@ -501,39 +449,40 @@ export default component$(() => {
             class="flex flex-col lg:flex-row items-center lg:items-start space-y-10 lg:space-y-0 lg:space-x-10 mt-16 px-4 sm:px-0 md:px-[90px] opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in md:opacity-100 md:translate-y-0"
           >
             <div class="w-full lg:w-auto">
-              <TitleComponent name={t('about.ribbon')} isLong={true} />
+              <TitleComponent name={t("about.ribbon")} isLong={true} />
               <div class="leading-6 mt-10 text-[16px] text-black p-8 sm:p-10 md:p-14 pt-10 bg-[#E29D21] shadow-lg max-w-full lg:max-w-[370px] mx-auto ml-0 text-justify opensans-regular">
-                {t('about.text')}
+                {t("about.text")}
               </div>
             </div>
             <div class="w-full lg:w-auto">
               <p class="text-white font-bold text-[52px] md:text-[64px] playfair">
-                {t('why.title')}
+                {t("why.title")}
               </p>
               <ul class="leading-6 mt-6 text-white text-left max-w-full lg:max-w-[800px] mx-auto lg:mx-0 opensans-regular list-disc pl-5 space-y-2">
-                <li>{t('why.point1')}</li>
-                <li>{t('why.point2')}</li>
-                <li>{t('why.point3')}</li>
-                <li>{t('why.point4')}</li>
+                <li>{t("why.point1")}</li>
+                <li>{t("why.point2")}</li>
+                <li>{t("why.point3")}</li>
+                <li>{t("why.point4")}</li>
+                <li>{t("why.point5")}</li>
               </ul>
               <div class="flex flex-col md:flex md:flex-row mt-12 gap-8 justify-items-center">
                 <div class="rounded-md pt-4 why-us h-[170px] w-[170px] bg-white text-[18px] text-[#0E1B1B] inter-semibold text-center shadow-lg mx-auto">
                   <div class="flex justify-center">
                     <Globe class="w-[70px] h-[70px]" />
                   </div>
-                  <p class="mt-4 inter-semibold">{t('why.card1.title')}</p>
+                  <p class="mt-4 inter-semibold">{t("why.card1.title")}</p>
                 </div>
                 <div class="rounded-md pt-4 why-us h-[170px] w-[170px] bg-white text-[18px] text-[#0E1B1B] inter-semibold flex-col text-center shadow-lg mx-auto">
                   <div class="flex justify-center">
                     <MdiTools class="w-[70px] h-[70px]" />
                   </div>
-                  <p class="mt-4 inter-semibold">{t('why.card2.title')}</p>
+                  <p class="mt-4 inter-semibold">{t("why.card2.title")}</p>
                 </div>
                 <div class="rounded-md pt-4 why-us h-[170px] w-[170px] bg-white text-[18px] text-[#0E1B1B] inter-semibold text-center shadow-lg mx-auto md:mx-0">
                   <div class="flex justify-center">
                     <Handshake class="w-[70px] h-[70px]" />
                   </div>
-                  <p class="mt-4 inter-semibold">{t('why.card3.title')}</p>
+                  <p class="mt-4 inter-semibold">{t("why.card3.title")}</p>
                 </div>
               </div>
             </div>
@@ -545,18 +494,18 @@ export default component$(() => {
           >
             {/* Mobile title - hidden on desktop */}
             <div class="md:hidden">
-              <TitleComponent name={t('work.ribbon.mobile')} isLong={true} />
+              <TitleComponent name={t("work.ribbon.mobile")} isLong={true} />
             </div>
             {/* Desktop title - hidden on mobile */}
             <div class="hidden md:block">
-              <TitleComponent name={t('work.ribbon.desktop')} isLong={true} />
+              <TitleComponent name={t("work.ribbon.desktop")} isLong={true} />
             </div>
             <div class="mt-10 text-center lg:text-left">
               <p class="md:block text-white font-bold text-[52px] md:text-[64px] playfair">
-                {t('work.title')}
+                {t("work.title")}
               </p>
               <p class="text-[16px] text-white mt-5 leading-6 max-w-full lg:max-w-[1171px] mx-auto lg:mx-0 text-justify opensans-regular">
-                {t('work.intro')}
+                {t("work.intro")}
               </p>
             </div>
             <div class="flex flex-col lg:flex-row mt-16 items-center lg:items-start">
@@ -569,53 +518,80 @@ export default component$(() => {
                   </div>
                   <div class="relative">
                     {workStep.value === 1 ? (
-                      <img src="/ourwork1.jpeg" class="w-full h-[300px] object-contain" alt="" />
+                      <img
+                        src="/ourwork1.jpeg"
+                        class="w-full h-[300px] object-contain"
+                        alt=""
+                      />
                     ) : workStep.value === 2 ? (
-                      <img src="/ourwork3.jpeg" class="w-full h-[300px] object-contain " alt="" />
+                      <img
+                        src="/ourwork3.jpeg"
+                        class="w-full h-[300px] object-contain "
+                        alt=""
+                      />
                     ) : (
-                      <img src="/work3.jpg" class="w-full h-[300px] object-contain " alt="" />
+                      <img
+                        src="/work3.jpg"
+                        class="w-full h-[300px] object-contain "
+                        alt=""
+                      />
                     )}
                   </div>
                 </div>
                 <div class="mt-8 mb-8 flex justify-center md:hidden">
-                  <MobileSteps selectedStep={workStep.value} onClickStep={onClickStepWork} />
+                  <MobileSteps
+                    selectedStep={workStep.value}
+                    onClickStep={onClickStepWork}
+                  />
                 </div>
                 <div class="mt-8 w-full max-w-[416px] text-center">
                   {workStep.value === 1 ? (
                     <div
                       class={`relative ${
-                        workStep.value === 1 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 1 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
                     >
                       <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">
-                        {t('work.step1.title')}
+                        {t("work.step1.title")}
                       </p>
-                      <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[200px]`}></div>
-                      <p class="mt-5 text-white leading-6 text-justify opensans-regular">{t('work.step1.text')}</p>
+                      <div
+                        class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[200px]`}
+                      ></div>
+                      <p class="mt-5 text-white leading-6 text-justify opensans-regular">
+                        {t("work.step1.text")}
+                      </p>
                     </div>
                   ) : workStep.value === 2 ? (
                     <div
                       class={`relative ${
-                        workStep.value === 2 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 2 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
                     >
                       <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">
-                        {t('work.step2.title')}
+                        {t("work.step2.title")}
                       </p>
-                      <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[180px]`}></div>
-                      <p class="mt-5 text-white leading-6 text-justify opensans-regular">{t('work.step2.text')}</p>
+                      <div
+                        class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[180px]`}
+                      ></div>
+                      <p class="mt-5 text-white leading-6 text-justify opensans-regular">
+                        {t("work.step2.text")}
+                      </p>
                     </div>
                   ) : (
                     <div
                       class={`relative ${
-                        workStep.value === 3 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 3 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
                     >
                       <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">
-                        {t('work.step3.title')}
+                        {t("work.step3.title")}
                       </p>
-                      <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[190px]`}></div>
-                      <p class="mt-5 text-white leading-6 text-justify opensans-regular">{t('work.step3.text')}</p>
+                      <div
+                        class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[190px]`}
+                      ></div>
+                      <p class="mt-5 text-white leading-6 text-justify opensans-regular">
+                        {t("work.step3.text")}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -627,28 +603,30 @@ export default component$(() => {
                   <div class="">
                     <p
                       class={`absolute ${
-                        workStep.value === 1 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 1 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}
                     >
                       01
                     </p>
                     <p
                       class={`absolute ${
-                        workStep.value === 2 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 2 ? " opacity-1" : "opacity-0"
                       }  transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}
                     >
                       02
                     </p>
                     <p
                       class={`absolute ${
-                        workStep.value === 3 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 3 ? " opacity-1" : "opacity-0"
                       }  transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}
                     >
                       03
                     </p>
                     <p
                       class={` ${
-                        workStep.value === 4 ? ' visible opacity-1' : 'opacity-0'
+                        workStep.value === 4
+                          ? " visible opacity-1"
+                          : "opacity-0"
                       }  transition-opacity ease-in-out duration-1000 text-[#E29D21] text-[120px] font-bold mr-10 ml-[105px] mt-[-20px]`}
                     >
                       1
@@ -657,19 +635,19 @@ export default component$(() => {
                       <img
                         src="/ourwork1.jpeg"
                         class={`absolute ${
-                          workStep.value === 1 ? ' opacity-1' : 'opacity-0'
+                          workStep.value === 1 ? " opacity-1" : "opacity-0"
                         } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px] object-contain`}
                       />
                       <img
                         src="/ourwork3.jpeg"
                         class={`absolute ${
-                          workStep.value === 2 ? ' opacity-1' : 'opacity-0'
+                          workStep.value === 2 ? " opacity-1" : "opacity-0"
                         } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px] object-contain`}
                       />
                       <img
                         src="/work3.jpg"
                         class={`absolute ${
-                          workStep.value === 3 ? ' opacity-1' : 'opacity-0'
+                          workStep.value === 3 ? " opacity-1" : "opacity-0"
                         } transition-opacity ease-in-out duration-1000 mt-10 h-[319px] w-[405px] object-contain`}
                       />
                     </div>
@@ -679,21 +657,21 @@ export default component$(() => {
                     <img
                       src="/ourwork2.jpeg"
                       class={`absolute h-[385px] w-[570px] ${
-                        workStep.value === 1 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 1 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000 object-contain`}
                       alt=""
                     />
                     <img
                       src="/work22.jpg"
                       class={`absolute h-[385px] w-[570px] ${
-                        workStep.value === 2 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 2 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000 object-contain`}
                       alt=""
                     />
                     <img
                       src="/work33.jpeg"
                       class={`absolute h-[385px] w-[570px] ${
-                        workStep.value === 3 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 3 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000 object-contain`}
                       alt=""
                     />
@@ -703,34 +681,55 @@ export default component$(() => {
                   <div>
                     <div
                       class={`absolute ${
-                        workStep.value === 1 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 1 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000`}
                     >
-                      <p class="text-[48px] font-bold playfair">{t('work.step1.title')}</p>
-                      <div class={`mt-1 h-[3px] mr-6 !bg-[#E29D21] w-[305px]`}></div>
-                      <p class="mt-5 w-[416px] h-[144px]  leading-6">{t('work.step1.text')}</p>
+                      <p class="text-[48px] font-bold playfair">
+                        {t("work.step1.title")}
+                      </p>
+                      <div
+                        class={`mt-1 h-[3px] mr-6 !bg-[#E29D21] w-[305px]`}
+                      ></div>
+                      <p class="mt-5 w-[416px] h-[144px]  leading-6">
+                        {t("work.step1.text")}
+                      </p>
                     </div>
                     <div
                       class={`absolute ${
-                        workStep.value === 2 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 2 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000`}
                     >
-                      <p class="text-[48px] font-bold playfair">{t('work.step2.title')}</p>
-                      <div class={`mt-1 h-[3px] mr-6 !bg-[#E29D21] w-[240px]`}></div>
-                      <p class="mt-5 w-[416px] h-[144px] leading-6">{t('work.step2.text')}</p>
+                      <p class="text-[48px] font-bold playfair">
+                        {t("work.step2.title")}
+                      </p>
+                      <div
+                        class={`mt-1 h-[3px] mr-6 !bg-[#E29D21] w-[240px]`}
+                      ></div>
+                      <p class="mt-5 w-[416px] h-[144px] leading-6">
+                        {t("work.step2.text")}
+                      </p>
                     </div>
                     <div
                       class={`absolute ${
-                        workStep.value === 3 ? ' opacity-1' : 'opacity-0'
+                        workStep.value === 3 ? " opacity-1" : "opacity-0"
                       } transition-opacity ease-in-out duration-1000`}
                     >
-                      <p class="text-[48px] font-bold playfair">{t('work.step3.title')}</p>
-                      <div class={`mt-1 h-[3px] mr-6 !bg-[#E29D21] w-[250px]`}></div>
-                      <p class="mt-5 w-[416px] h-[144px]  leading-6">{t('work.step3.text')}</p>
+                      <p class="text-[48px] font-bold playfair">
+                        {t("work.step3.title")}
+                      </p>
+                      <div
+                        class={`mt-1 h-[3px] mr-6 !bg-[#E29D21] w-[250px]`}
+                      ></div>
+                      <p class="mt-5 w-[416px] h-[144px]  leading-6">
+                        {t("work.step3.text")}
+                      </p>
                     </div>
                   </div>
                   <div class="mt-[330px]">
-                    <DesktopSteps selectedStep={workStep.value} onClickStep={onClickStepWork} />
+                    <DesktopSteps
+                      selectedStep={workStep.value}
+                      onClickStep={onClickStepWork}
+                    />
                   </div>
                 </div>
               </div>
@@ -744,31 +743,106 @@ export default component$(() => {
           >
             {/* Mobile title - hidden on desktop */}
             <div class="md:hidden">
-              <TitleComponent name={t('products.ribbon.mobile')} isLong={true} />
+              <TitleComponent
+                name={t("products.ribbon.mobile")}
+                isLong={true}
+              />
             </div>
             {/* Desktop title - hidden on mobile */}
             <div class="hidden md:block">
-              <TitleComponent name={t('products.ribbon.desktop')} isLong={true} />
+              <TitleComponent
+                name={t("products.ribbon.desktop")}
+                isLong={true}
+              />
             </div>
             <div class="services mt-10">
               <p class="text-white font-bold text-[52px] md:text-[64px] playfair text-center md:text-left">
-                {t('products.title')}
+                {t("products.title")}
               </p>
               <p class="text-[16px] text-white w-full max-w-[1171px] mt-5 leading-6 text-center md:text-left mx-auto md:mx-0">
-                {t('products.intro')}
+                {t("products.intro")}
               </p>
-              <div class="mt-10 w-full overflow-hidden">
+
+              {/* Product Categories List */}
+              <div class="mt-10 flex flex-wrap gap-4 max-w-6xl mx-auto">
+                <div class="bg-gradient-to-br from-[#E29D21]/20 to-[#E29D21]/5 border border-[#E29D21]/30 p-5 rounded-lg hover:from-[#E29D21]/30 hover:to-[#E29D21]/10 hover:border-[#E29D21]/60 transition-all flex-1 min-w-[280px]">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-1 h-6 bg-[#E29D21]"></div>
+                    <h3 class="text-[#E29D21] font-bold text-lg inter-semibold">
+                      {t("products.item1")}
+                    </h3>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#E29D21]/20 to-[#E29D21]/5 border border-[#E29D21]/30 p-5 rounded-lg hover:from-[#E29D21]/30 hover:to-[#E29D21]/10 hover:border-[#E29D21]/60 transition-all flex-1 min-w-[280px]">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-1 h-6 bg-[#E29D21]"></div>
+                    <h3 class="text-[#E29D21] font-bold text-lg inter-semibold">
+                      {t("products.item2")}
+                    </h3>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#E29D21]/20 to-[#E29D21]/5 border border-[#E29D21]/30 p-5 rounded-lg hover:from-[#E29D21]/30 hover:to-[#E29D21]/10 hover:border-[#E29D21]/60 transition-all flex-1 min-w-[280px]">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-1 h-6 bg-[#E29D21]"></div>
+                    <h3 class="text-[#E29D21] font-bold text-lg inter-semibold">
+                      {t("products.item3")}
+                    </h3>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#E29D21]/20 to-[#E29D21]/5 border border-[#E29D21]/30 p-5 rounded-lg hover:from-[#E29D21]/30 hover:to-[#E29D21]/10 hover:border-[#E29D21]/60 transition-all flex-1 min-w-[280px]">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-1 h-6 bg-[#E29D21]"></div>
+                    <h3 class="text-[#E29D21] font-bold text-lg inter-semibold">
+                      {t("products.item4")}
+                    </h3>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#E29D21]/20 to-[#E29D21]/5 border border-[#E29D21]/30 p-5 rounded-lg hover:from-[#E29D21]/30 hover:to-[#E29D21]/10 hover:border-[#E29D21]/60 transition-all flex-1 min-w-[280px]">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-1 h-6 bg-[#E29D21]"></div>
+                    <h3 class="text-[#E29D21] font-bold text-lg inter-semibold">
+                      {t("products.item5")}
+                    </h3>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#E29D21]/20 to-[#E29D21]/5 border border-[#E29D21]/30 p-5 rounded-lg hover:from-[#E29D21]/30 hover:to-[#E29D21]/10 hover:border-[#E29D21]/60 transition-all flex-1 min-w-[280px]">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-1 h-6 bg-[#E29D21]"></div>
+                    <h3 class="text-[#E29D21] font-bold text-lg inter-semibold">
+                      {t("products.item6")}
+                    </h3>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#E29D21]/20 to-[#E29D21]/5 border border-[#E29D21]/30 p-5 rounded-lg hover:from-[#E29D21]/30 hover:to-[#E29D21]/10 hover:border-[#E29D21]/60 transition-all flex-1 min-w-[280px]">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-1 h-6 bg-[#E29D21]"></div>
+                    <h3 class="text-[#E29D21] font-bold text-lg inter-semibold">
+                      {t("products.item7")}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+
+              {/* Brands Section with Carousel */}
+              <div class="mt-12 w-full overflow-hidden">
                 <div
                   class="flex transition-transform duration-300 ease-out"
                   style={`transform: translateX(-${productIndex.value * 25}%);`}
                 >
                   {[...productLogos, ...productLogos].map((logo, idx) => (
-                    <div key={idx} class="flex-shrink-0 flex-grow-0 basis-1/4 flex justify-center">
+                    <div
+                      key={idx}
+                      class="flex-shrink-0 flex-grow-0 basis-1/4 flex justify-center"
+                    >
                       <div class="bg-gray-500/20 rounded-lg p-2 w-24 h-24 sm:w-44 sm:h-44 flex items-center justify-center">
                         <img
                           src={logo}
                           alt={`Product logo ${idx + 1}`}
-                          class={`object-contain ${idx % productLogos.length < 7 ? 'h-16 sm:h-24' : 'h-12 sm:h-20'}`}
+                          class={`object-contain ${
+                            idx % productLogos.length < 7
+                              ? "h-16 sm:h-24"
+                              : "h-12 sm:h-20"
+                          }`}
                           loading="lazy"
                         />
                       </div>
@@ -776,198 +850,90 @@ export default component$(() => {
                   ))}
                 </div>
               </div>
+
+              {/* CTA Button centered */}
+              <div class="mt-10 text-center">
+                <a
+                  href="#contact"
+                  class="inline-block bg-[#E29D21] w-[280px] sm:w-[320px] h-[55px] flex items-center justify-center text-black font-semibold text-base inter-semibold rounded-md hover:bg-[#d6901e] transition-colors mx-auto"
+                >
+                  {t("products.cta")}
+                </a>
+              </div>
             </div>
           </div>
 
           {/* SERVICES SECTION */}
           <div
             id="services"
-            class="mt-6 md:px-[90px] mx-auto opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in md:opacity-100 md:translate-y-0"
+            class="w-full mt-6 px-4 md:px-[90px] opacity-0 translate-y-8 transition-all duration-700 ease-out mobile-fade-in md:opacity-100 md:translate-y-0"
           >
             {/* Mobile title - hidden on desktop */}
             <div class="md:hidden">
-              <TitleComponent name={t('services.ribbon.mobile')} isLong={true} />
+              <TitleComponent
+                name={t("services.ribbon.mobile")}
+                isLong={true}
+              />
             </div>
             {/* Desktop title - hidden on mobile */}
             <div class="hidden md:block">
-              <TitleComponent name={t('services.ribbon.desktop')} isLong={true} />
+              <TitleComponent
+                name={t("services.ribbon.desktop")}
+                isLong={true}
+              />
             </div>
-            <div class="mt-10 text-center lg:text-left">
+            <div class="mt-10 text-left">
               <p class="text-white font-bold text-[52px] md:text-[64px] playfair">
-                {t('services.title')}
+                {t("services.title")}
               </p>
             </div>
             <div class="services mt-10">
-              <p class="text-white mt-8 leading-6 text-center md:text-left max-w-full lg:max-w-[800px] mx-auto md:mx-0 text-justify opensans-regular">
-                {t('services.intro')}
+              <p class="text-white mt-8 leading-6 text-left max-w-full lg:max-w-[800px] text-justify opensans-regular">
+                {t("services.intro")}
               </p>
-              {/* Mobile View for Services */}
-              <div class="flex flex-col items-center md:hidden mt-12 space-y-8">
-                <div class="relative w-full max-w-[780px] h-auto">
-                  {serviceStep.value === 1 ? (
-                    <img src="/serviceproducts.jpeg" class="w-full h-auto shadow-lg object-contain" alt="" />
-                  ) : serviceStep.value === 2 ? (
-                    <img src="/serviceconsolidation.jpeg" class="w-full h-auto shadow-lg object-contain" alt="" />
-                  ) : serviceStep.value === 3 ? (
-                    <img src="/servicealmacen.jpeg" class="w-full h-auto shadow-lg object-contain" alt="" />
-                  ) : (
-                    <img src="/serviceproducts.jpeg" class="w-full h-auto shadow-lg object-contain" alt="" />
-                  )}
-                </div>
-                <div class="flex justify-center mt-8 md:hidden">
-                  <MobileServiceSteps selectedStep={serviceStep.value} onClickStep={onClickStepService} />
-                </div>
-                {serviceStep.value === 1 ? (
-                  <div
-                    class={`w-full max-w-[444px] text-center ${
-                      serviceStep.value === 1 ? ' opacity-1' : 'opacity-0'
-                    } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
-                  >
-                    <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">
-                      {t('services.1.title')}
-                    </p>
-                    <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[200px]`}></div>
-                    <p class="text-white mt-4 leading-6 text-justify opensans-regular">
-                      {t('services.1.text')}
-                    </p>
-                  </div>
-                ) : serviceStep.value === 2 ? (
-                  <div
-                    class={`w-full max-w-[444px] text-center ${
-                      serviceStep.value === 2 ? ' opacity-1' : 'opacity-0'
-                    } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
-                  >
-                    <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">
-                      {t('services.2.title')}
-                    </p>
-                    <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[220px]`}></div>
-                    <p class="text-white mt-4 leading-6 text-justify opensans-regular">
-                      {t('services.2.text')}
-                    </p>
-                  </div>
-                ) : serviceStep.value === 3 ? (
-                  <div
-                    class={`w-full max-w-[444px] text-center ${
-                      serviceStep.value === 3 ? ' opacity-1' : 'opacity-0'
-                    } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
-                  >
-                    <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">
-                      {t('services.3.title')}
-                    </p>
-                    <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[260px]`}></div>
-                    <p class="text-white mt-4 leading-6 text-justify opensans-regular">
-                      {t('services.3.text')}
-                    </p>
-                  </div>
-                ) : (
-                  <div
-                    class={`w-full max-w-[444px] text-center ${
-                      serviceStep.value === 4 ? ' opacity-1' : 'opacity-0'
-                    } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
-                  >
-                    <p class="text-3xl sm:text-4xl font-bold playfair-regular text-white">
-                      {t('services.4.title')}
-                    </p>
-                    <div class={`mt-1 h-[3px] mx-auto !bg-[#E29D21] w-[260px]`}></div>
-                    <p class="text-white mt-4 leading-6 text-justify opensans-regular">
-                      {t('services.4.text')}
-                    </p>
-                  </div>
-                )}
-              </div>
 
-              {/* Desktop View for Services */}
-              <div class="hidden md:flex mt-12 space-x-12">
-                <div class="relative w-[780px] h-[340px]">
-                  {serviceStep.value === 1 ? (
-                    <img
-                      src="/serviceproducts.jpeg"
-                      class="w-full h-full object-cover shadow-lg"
-                      alt=""
-                    />
-                  ) : serviceStep.value === 2 ? (
-                    <img
-                      src="/serviceconsolidation.jpeg"
-                      class="w-full h-full object-cover shadow-lg"
-                      alt=""
-                    />
-                  ) : serviceStep.value === 3 ? (
-                    <img
-                      src="/servicealmacen.jpeg"
-                      class="w-full h-full object-cover shadow-lg"
-                      alt=""
-                    />
-                  ) : (
-                    <img
-                      src="/serviceproducts.jpeg"
-                      class="w-full h-full object-cover shadow-lg"
-                      alt=""
-                    />
-                  )}
-                  <div class="absolute bottom-12 left-8 hidden md:block">
-                    <DesktopServiceSteps
-                      selectedStep={serviceStep.value}
-                      onClickStep={onClickStepService}
-                    />
-                  </div>
+              {/* Services List - Simple bullet points */}
+              <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-colors border-l-4 border-[#E29D21]">
+                  <h3 class="text-[#E29D21] font-bold text-xl inter-semibold mb-2">
+                    {t("services.1.title")}
+                  </h3>
+                  <p class="text-white text-sm sm:text-base leading-6 opensans-regular">
+                    {t("services.1.text")}
+                  </p>
                 </div>
-                {serviceStep.value === 1 ? (
-                  <div
-                    class={`w-[444px] ${
-                      serviceStep.value === 1 ? ' opacity-1' : 'opacity-0'
-                    } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
-                  >
-                    <p class="text-[42px] font-bold playfair-regular text-white">
-                      {t('services.1.title')}
-                    </p>
-                    <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[260px]`}></div>
-                    <p class="text-white mt-8 leading-6 text-justify opensans-regular">
-                      {t('services.1.text')}
-                    </p>
-                  </div>
-                ) : serviceStep.value === 2 ? (
-                  <div
-                    class={`w-[444px] ${
-                      serviceStep.value === 2 ? ' opacity-1' : 'opacity-0'
-                    } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
-                  >
-                    <p class="text-[42px] font-bold playfair-regular text-white">
-                      {t('services.2.title')}
-                    </p>
-                    <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[290px]`}></div>
-                    <p class="text-white mt-8 leading-6 text-justify opensans-regular">
-                      {t('services.2.text')}
-                    </p>
-                  </div>
-                ) : serviceStep.value === 3 ? (
-                  <div
-                    class={`w-[444px] ${
-                      serviceStep.value === 3 ? ' opacity-1' : 'opacity-0'
-                    } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
-                  >
-                    <p class="text-[42px] font-bold playfair-regular text-white">
-                      {t('services.3.title')}
-                    </p>
-                    <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[320px]`}></div>
-                    <p class="text-white mt-8 leading-6 text-justify opensans-regular">
-                      {t('services.3.text')}
-                    </p>
-                  </div>
-                ) : (
-                  <div
-                    class={`w-[444px] ${
-                      serviceStep.value === 4 ? ' opacity-1' : 'opacity-0'
-                    } transition-opacity ease-in-out duration-1000 transform translate-y-0 transition-transform duration-1000`}
-                  >
-                    <p class="text-[42px] font-bold playfair-regular text-white">
-                      {t('services.4.title')}
-                    </p>
-                    <div class={`mt-1 h-[3px] mx-auto lg:mx-0 !bg-[#E29D21] w-[290px]`}></div>
-                    <p class="text-white mt-8 leading-6 text-justify opensans-regular">
-                      {t('services.4.text')}
-                    </p>
-                  </div>
-                )}
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-colors border-l-4 border-[#E29D21]">
+                  <h3 class="text-[#E29D21] font-bold text-xl inter-semibold mb-2">
+                    {t("services.2.title")}
+                  </h3>
+                  <p class="text-white text-sm sm:text-base leading-6 opensans-regular">
+                    {t("services.2.text")}
+                  </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-colors border-l-4 border-[#E29D21]">
+                  <h3 class="text-[#E29D21] font-bold text-xl inter-semibold mb-2">
+                    {t("services.3.title")}
+                  </h3>
+                  <p class="text-white text-sm sm:text-base leading-6 opensans-regular">
+                    {t("services.3.text")}
+                  </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-colors border-l-4 border-[#E29D21]">
+                  <h3 class="text-[#E29D21] font-bold text-xl inter-semibold mb-2">
+                    {t("services.4.title")}
+                  </h3>
+                  <p class="text-white text-sm sm:text-base leading-6 opensans-regular">
+                    {t("services.4.text")}
+                  </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-colors border-l-4 border-[#E29D21] md:col-span-2">
+                  <h3 class="text-[#E29D21] font-bold text-xl inter-semibold mb-2">
+                    {t("services.5.title")}
+                  </h3>
+                  <p class="text-white text-sm sm:text-base leading-6 opensans-regular">
+                    {t("services.5.text")}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -978,10 +944,10 @@ export default component$(() => {
           >
             <div>
               <div class="md:hidden">
-                <TitleComponent name={t('contact.ribbon')} isLong={true} />
+                <TitleComponent name={t("contact.ribbon")} isLong={true} />
               </div>
               <div class="hidden md:block">
-                <TitleComponent name={t('contact.ribbon')} isLong={true} />
+                <TitleComponent name={t("contact.ribbon")} isLong={true} />
               </div>
             </div>
             <div class="flex flex-col lg:flex-row mt-12 space-y-8 lg:space-y-0 lg:space-x-4 items-center lg:items-start">
@@ -995,10 +961,10 @@ export default component$(() => {
               </div>
               <div class="flex flex-col w-full lg:w-1/2 text-center lg:text-left">
                 <p class="text-4xl sm:text-5xl lg:text-[64px] font-bold playfair-bold text-white">
-                  {t('contact.title')}
+                  {t("contact.title")}
                 </p>
                 <p class="text-white mt-8 leading-6 max-w-full lg:max-w-[800px] mx-auto lg:mx-0 text-justify opensans-regular">
-                  {t('contact.description')}
+                  {t("contact.description")}
                 </p>
 
                 {/* Quick contact actions */}
@@ -1024,7 +990,7 @@ export default component$(() => {
                         </svg>
                       </div>
                       <span class="text-sm sm:text-base font-semibold">
-                        {t('contact.actions.requestInfo')}
+                        {t("contact.actions.requestInfo")}
                       </span>
                     </div>
                     <span class="text-gray-400">...</span>
@@ -1053,7 +1019,7 @@ export default component$(() => {
                         </svg>
                       </div>
                       <span class="text-sm sm:text-base font-semibold">
-                        {t('contact.actions.instagram')}
+                        {t("contact.actions.instagram")}
                       </span>
                     </div>
                     <span class="text-gray-400">...</span>
@@ -1082,7 +1048,7 @@ export default component$(() => {
                         </svg>
                       </div>
                       <span class="text-sm sm:text-base font-semibold">
-                        {t('contact.actions.linkedin')}
+                        {t("contact.actions.linkedin")}
                       </span>
                     </div>
                     <span class="text-gray-400">...</span>
@@ -1108,10 +1074,34 @@ export default component$(() => {
                         </svg>
                       </div>
                       <span class="text-sm sm:text-base font-semibold">
-                        {t('contact.actions.facebook')}
+                        {t("contact.actions.facebook")}
                       </span>
                     </div>
                     <span class="text-gray-400">...</span>
+                  </a>
+
+                  {/* WhatsApp */}
+                  <a
+                    href="https://wa.me/1XXXXXXXXXX"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-between bg-green-500 text-white px-4 py-3 rounded-md shadow-md hover:bg-green-600 transition-colors"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="h-10 w-10 flex items-center justify-center rounded-full bg-white">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-6 h-6 text-green-500"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01c-1.87-1.87-4.36-2.9-7.01-2.9zM12.05 3.67c4.54 0 8.24 3.7 8.24 8.24c0 4.54-3.7 8.24-8.24 8.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.31c-.81-1.29-1.25-2.78-1.25-4.31c0-4.54 3.7-8.24 8.24-8.24m4.58 10.6c-.23-.39-.86-.62-1.81-.95c-.35-.13-.73-.26-1.13-.39c-.42-.13-.7-.21-.87-.21c-.21 0-.41.09-.6.27l-.19.27c-.19.26-.36.49-.63.49c-.16 0-.39-.11-.68-.28c-.61-.35-1.22-.8-1.75-1.46c-.42-.52-.79-1.08-1.09-1.68c-.1-.19-.06-.4.13-.76l.16-.3c.1-.18.15-.32.15-.46c0-.13-.04-.26-.12-.41c-.08-.15-.34-.66-.53-1.03c-.18-.36-.35-.7-.49-.85c-.08-.2-.2-.3-.37-.3h-.35c-.13 0-.34.05-.53.24c-.19.19-.75.73-.75 1.74c0 .69.25 1.36.73 1.97c.76.95 1.67 1.7 2.68 2.13c1.01.43 1.63.53 2.01.51c.38-.02.88-.28 1.16-.75c.21-.36.35-.86.41-1.06c.06-.2.02-.37-.09-.57z" />
+                        </svg>
+                      </div>
+                      <span class="text-sm sm:text-base font-semibold">
+                        {t("contact.whatsapp")}
+                      </span>
+                    </div>
                   </a>
                 </div>
 
@@ -1122,8 +1112,12 @@ export default component$(() => {
                       <EmailIcon></EmailIcon>
                     </div>
                     <div class="text-left mt-1">
-                      <p class="text-white text-[14px] opensans-regular">{t('contact.email.label')}</p>
-                      <p class="text-[#E29D21] leading-6 inter-semibold">{t('contact.email.value')}</p>
+                      <p class="text-white text-[14px] opensans-regular">
+                        {t("contact.email.label")}
+                      </p>
+                      <p class="text-[#E29D21] leading-6 inter-semibold">
+                        {t("contact.email.value")}
+                      </p>
                     </div>
                   </div>
                   <div class="w-full sm:w-[350px] flex justify-start sm:justify-start items-start mt-4">
@@ -1131,9 +1125,11 @@ export default component$(() => {
                       <IcBaselineLocationOn></IcBaselineLocationOn>
                     </div>
                     <div class="text-left mt-1 w-full">
-                      <p class="text-white text-[14px] opensans-regular">{t('contact.visit.label')}</p>
+                      <p class="text-white text-[14px] opensans-regular">
+                        {t("contact.visit.label")}
+                      </p>
                       <p class="text-[#E29D21] leading-6 inter-semibold">
-                        {t('contact.visit.value')}
+                        {t("contact.visit.value")}
                       </p>
                       <div class="mt-4 w-full h-[200px] sm:h-[220px] rounded-md overflow-hidden shadow-lg">
                         <iframe
@@ -1161,5 +1157,5 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'ELD CORP',
+  title: "ELD CORP",
 };
