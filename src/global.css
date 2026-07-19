@@ -74,16 +74,16 @@ body {
 }
 
 .playfair {
-  font-family: "Playfair Display";
+  font-family: "Inter", sans-serif;
 }
 
 .playfair-bold {
-  font-family: "Playfair Display", serif;
+  font-family: "Inter", sans-serif;
   font-weight: 700;
 }
 
 .playfair-regular {
-  font-family: "Playfair Display", serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
 }
 
