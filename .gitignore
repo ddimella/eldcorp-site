@@ -40,3 +40,7 @@ lerna-debug.log*
 
 # Vercel
 .vercel
+
+# Local agent artifacts (micode / opencode)
+thoughts/
+docs/agent-sessions/

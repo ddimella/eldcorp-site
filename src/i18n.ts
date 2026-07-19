@@ -30,6 +30,8 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.title.line2": "para maquinaria pesada",
     "hero.subtitle":
       "Soluciones rápidas y confiables desde Miami a toda Latinoamérica.",
+    "hero.subtitle.list":
+      "Originales, Surplus, OEM, aftermarket, nuevos, usados, reconstruidos, componentes mayores, aditamentos — todo para que tu operación sea eficiente y rentable.",
     "hero.experience":
       "20+ años de experiencia en procura internacional y logística.",
     "hero.cta": "Solicitar cotización",
@@ -69,6 +71,8 @@ const translations: Record<Language, Record<string, string>> = {
     "why.point3": "Amplia red de fabricantes y distribuidores",
     "why.point4": "Procesos eficientes que reducen tiempos y costos",
     "why.point5": "Envíos a toda Latinoamérica",
+    "why.point6":
+      "Oficinas y almacenes con ubicación estratégica",
 
     "why.card1.title": "Alcance Global",
     "why.card2.title": "Experiencia",
@@ -137,6 +141,16 @@ const translations: Record<Language, Record<string, string>> = {
     "services.5.text":
       "Te ayudamos a identificar la pieza correcta, evitar errores de compatibilidad y optimizar tus operaciones.",
 
+    "services.carousel.1.title": "Procura de repuestos",
+    "services.carousel.1.text":
+      "Localizamos y suministramos piezas para maquinaria pesada de las principales marcas del mercado. Coordinamos cada orden desde la identificación del número de parte hasta la entrega final.",
+    "services.carousel.2.title": "Logística internacional",
+    "services.carousel.2.text":
+      "Consolidación, embarque y transporte puerta a puerta. Mantenemos informado a nuestros clientes durante todo el proceso, sin necesidad de múltiples proveedores.",
+    "services.carousel.3.title": "Almacenes estratégicos",
+    "services.carousel.3.text":
+      "Oficinas y almacenes en Miami con ubicación privilegiada para acceder a proveedores globales y despachar rápidamente a toda Latinoamérica.",
+
     // Contacto
     "contact.ribbon": "CONTACTO",
     "contact.title": "Contáctanos",
@@ -147,6 +161,8 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.whatsapp": "Chatear ahora",
     "contact.email.label": "Correo electrónico",
     "contact.email.value": "sales@eldparts.com",
+    "contact.hours.label": "Horario de atención",
+    "contact.hours.value": "Lun – Vie · 9:00 AM – 6:00 PM EST",
     "contact.visit.label": "Dirección",
     "contact.visit.value": "6613 NW 84th Ave, Miami FL 33166",
     "contact.callToAction": "¡Solicita una llamada!",
@@ -188,6 +204,8 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.title.line2": "for heavy machinery",
     "hero.subtitle":
       "Fast and reliable solutions from Miami to all of Latin America.",
+    "hero.subtitle.list":
+      "Original, Surplus, OEM, aftermarket, new, used, rebuilt, major components, attachments — everything to keep your operation efficient and profitable.",
     "hero.experience":
       "20+ years of experience in international procurement, logistics and industrial supply.",
     "hero.cta": "Request a quote",
@@ -227,6 +245,7 @@ const translations: Record<Language, Record<string, string>> = {
     "why.point3": "Wide network of manufacturers and distributors",
     "why.point4": "Efficient processes that reduce time and costs",
     "why.point5": "Shipments throughout Latin America",
+    "why.point6": "Strategically located offices and warehouses",
 
     "why.card1.title": "Global Reach",
     "why.card2.title": "Experience",
@@ -295,6 +314,16 @@ const translations: Record<Language, Record<string, string>> = {
     "services.5.text":
       "We help you identify the correct part, avoid compatibility errors, and optimize your operations.",
 
+    "services.carousel.1.title": "Parts sourcing",
+    "services.carousel.1.text":
+      "We locate and supply parts for heavy machinery from the leading brands. We coordinate every order from part number identification all the way to final delivery.",
+    "services.carousel.2.title": "International logistics",
+    "services.carousel.2.text":
+      "Consolidation, shipping and door-to-door transportation. We keep our clients informed at every step of the process, with no need for multiple vendors.",
+    "services.carousel.3.title": "Strategic warehouses",
+    "services.carousel.3.text":
+      "Offices and warehouses in Miami with a privileged location to access global suppliers and ship quickly throughout Latin America.",
+
     // Contact
     "contact.ribbon": "CONTACT",
     "contact.title": "Contact Us",
@@ -305,6 +334,8 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.whatsapp": "Chat now",
     "contact.email.label": "Email",
     "contact.email.value": "sales@eldparts.com",
+    "contact.hours.label": "Business hours",
+    "contact.hours.value": "Mon – Fri · 9:00 AM – 6:00 PM EST",
     "contact.visit.label": "Address",
     "contact.visit.value": "6613 NW 84th Ave, Miami FL 33166",
     "contact.callToAction": "Request a call!",
