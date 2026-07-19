@@ -97,6 +97,8 @@ export function MdiWhatsapp(props: QwikIntrinsicElements["svg"], key: string) {
 // WhatsApp number placeholder — replace with the client's real number (international format, no +).
 const WHATSAPP_LINK = "https://wa.me/13055555555";
 const INSTAGRAM_LINK = "https://instagram.com/eldcorp";
+const CONTACT_EMAIL = "eldcorp@gmail.com";
+const ADVISOR_MAILTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Hablar con un asesor - ELD Corp")}&body=${encodeURIComponent("Hola, me gustaría hablar con un asesor para recibir más información.")}`;
 
 export default component$(() => {
   const homeStep = useSignal(0);
@@ -191,9 +193,7 @@ export default component$(() => {
               {t("hero.cta")}
             </a>
             <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={ADVISOR_MAILTO}
               class="border-2 border-[#F5B324] w-full max-w-[260px] h-[50px] flex items-center justify-center text-[#F5B324] font-bold text-base inter-bold rounded-md hover:bg-[#F5B324] hover:text-black hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-5px_rgba(245,179,36,0.35)] active:scale-95 transition-all duration-300"
             >
               {t("hero.cta.secondary")}
@@ -230,9 +230,7 @@ export default component$(() => {
               {t("hero.cta.long")}
             </a>
             <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={ADVISOR_MAILTO}
               class="border-2 border-[#F5B324] w-[220px] h-[58px] flex items-center justify-center text-[#F5B324] font-bold rounded-md inter-bold hover:bg-[#F5B324] hover:text-black hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-5px_rgba(245,179,36,0.35)] active:scale-95 transition-all duration-300"
             >
               {t("hero.cta.secondary")}
@@ -290,9 +288,7 @@ export default component$(() => {
               {t("hero.cta.long")}
             </a>
             <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={ADVISOR_MAILTO}
               class="border-2 border-[#F5B324] w-[220px] h-[58px] flex items-center justify-center text-[#F5B324] font-bold rounded-md inter-bold hover:bg-[#F5B324] hover:text-black hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-5px_rgba(245,179,36,0.35)] active:scale-95 transition-all duration-300"
             >
               {t("hero.cta.secondary")}
@@ -350,9 +346,7 @@ export default component$(() => {
               {t("hero.cta.long")}
             </a>
             <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={ADVISOR_MAILTO}
               class="border-2 border-[#F5B324] w-[220px] h-[58px] flex items-center justify-center text-[#F5B324] font-bold rounded-md inter-bold hover:bg-[#F5B324] hover:text-black hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-5px_rgba(245,179,36,0.35)] active:scale-95 transition-all duration-300"
             >
               {t("hero.cta.secondary")}
