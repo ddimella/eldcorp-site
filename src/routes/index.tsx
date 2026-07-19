@@ -660,7 +660,7 @@ export default component$(() => {
               </div>
 
               {/* Brands Section — 5 per slide, white card backgrounds */}
-              <div class="mt-12 w-full overflow-hidden">
+              <div class="mt-12 mb-[-2rem] py-10 w-full overflow-hidden">
                 <div
                   class="flex transition-transform duration-500 ease-out"
                   style={`transform: translateX(-${productIndex.value * 20}%);`}
