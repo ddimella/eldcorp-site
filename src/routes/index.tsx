@@ -323,17 +323,21 @@ export default component$(() => {
   const productIndex = useSignal(0);
 
   const productLogos = [
-    "/productLogo1.png",
-    "/productLogo2.png",
+    "/productLogo15.png",
     "/productLogo3.png",
+    "/productLogo14.png",
+    "/productLogo9.png",
+    "/productLogo2.png",
+    "/productLogo1.png",
     "/productLogo4.png",
     "/productLogo5.png",
     "/productLogo6.png",
     "/productLogo7.png",
     "/productLogo8.png",
-    "/productLogo9.png",
     "/productLogo10.png",
     "/productLogo11.png",
+    "/productLogo12.png",
+    "/productLogo13.png",
   ];
 
   const onClickStepService = $((step: number) => {
