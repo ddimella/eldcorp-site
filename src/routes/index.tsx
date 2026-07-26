@@ -667,7 +667,7 @@ export default component$(() => {
                   {[...productLogos, ...productLogos].map((logo, idx) => (
                     <div
                       key={idx}
-                      class="flex-shrink-0 flex-grow-0 basis-1/2 sm:basis-1/3 md:basis-1/5 flex justify-center px-2"
+                      class="flex-shrink-0 flex-grow-0 w-[150px] sm:w-[170px] md:w-[190px] lg:w-[210px] flex justify-center px-2"
                     >
                       <div class="brand-glass rounded-lg p-4 w-full aspect-square flex items-center justify-center">
                         <img
