@@ -167,7 +167,7 @@ export default component$(() => {
 
       {/* === Slide 0 — Mobile === */}
       <div
-        class={`absolute inset-0 flex flex-col justify-center items-center md:hidden transition-init px-6 ${
+        class={`absolute inset-0 flex flex-col justify-center items-center md:hidden transition-init px-6 pt-[200px] ${
           homeStep.value === 0 ? "opacity-1" : "opacity-0 pointer-events-none"
         } transition-opacity ease-in-out duration-500`}
       >
