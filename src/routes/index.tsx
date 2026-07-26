@@ -3,7 +3,7 @@ import type { QRL, QwikIntrinsicElements } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 import Hero from "~/components/starter/hero/hero";
-import { t } from "~/i18n";
+import { useTranslate } from "~/i18n";
 
 /* ============================================================
  * Shared constants
@@ -12,7 +12,7 @@ import { t } from "~/i18n";
 // Placeholder WhatsApp number — replace with client's real number (international format, no +).
 const WHATSAPP_LINK = "https://wa.me/13055555555";
 const WHATSAPP_DISPLAY = "+1 305 555 5555";
-const CONTACT_EMAIL = "eldcorp@gmail.com";
+const CONTACT_EMAIL = "sales@eldparts.com";
 
 /* ============================================================
  * Number formatting helpers
@@ -92,6 +92,7 @@ const DesktopStepper = component$<StepperProps>(
  * ============================================================ */
 
 const MobileCounters = component$(() => {
+  const t = useTranslate();
   const cards = [
     { value: formatNumber(106120), label1: t("counters.items.label1"), label2: t("counters.items.label2") },
     { value: formatNumber(129258.25, 2), label1: t("counters.weight.label1"), label2: t("counters.weight.label2") },
@@ -320,7 +321,7 @@ const serviceSlides: ServiceSlide[] = [
 
 export default component$(() => {
   const serviceStep = useSignal(1);
-  const productIndex = useSignal(0);
+  const t = useTranslate();
 
   const productLogos = [
     "/productLogo15.png",
@@ -365,14 +366,11 @@ export default component$(() => {
     const elements = document.querySelectorAll(".mobile-fade-in");
     elements.forEach((el) => observer.observe(el));
 
-    // Automatic horizontal carousel: advance one logo at a time (5 logos per slide)
-    const interval = window.setInterval(() => {
-      productIndex.value = (productIndex.value + 1) % productLogos.length;
-    }, 5000);
+    // El carrusel de marcas ahora se desplaza con una animación CSS continua
+    // (marquee) — ver .brands-marquee en global.css. No requiere JS.
 
     return () => {
       elements.forEach((el) => observer.unobserve(el));
-      window.clearInterval(interval);
     };
   });
 
@@ -663,22 +661,19 @@ export default component$(() => {
                 ))}
               </div>
 
-              {/* Brands Section — 5 per slide, white card backgrounds */}
+              {/* Brands Section — continuous marquee (CSS), responsive sizing */}
               <div class="mt-12 mb-[-2rem] py-10 w-full overflow-hidden">
-                <div
-                  class="flex transition-transform duration-500 ease-out"
-                  style={`transform: translateX(-${productIndex.value * 20}%);`}
-                >
+                <div class="brands-marquee flex">
                   {[...productLogos, ...productLogos].map((logo, idx) => (
                     <div
                       key={idx}
-                      class="flex-shrink-0 flex-grow-0 basis-1/5 flex justify-center px-2"
+                      class="flex-shrink-0 flex-grow-0 basis-1/2 sm:basis-1/3 md:basis-1/5 flex justify-center px-2"
                     >
-                      <div class="brand-glass rounded-lg p-4 w-full max-w-[180px] aspect-square flex items-center justify-center">
+                      <div class="brand-glass rounded-lg p-4 w-full aspect-square flex items-center justify-center">
                         <img
                           src={logo}
-                          alt={`Product logo ${idx + 1}`}
-                          class="object-contain w-full h-full max-h-[100px]"
+                          alt={`Product logo ${(idx % productLogos.length) + 1}`}
+                          class="object-contain w-full h-full"
                           loading="lazy"
                         />
                       </div>

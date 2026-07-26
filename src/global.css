@@ -134,16 +134,16 @@ body {
 /* Tinted glass card with film-grain texture for brand logos */
 .brand-glass {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.22);
   background-image:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.1) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.16) 100%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-blend-mode: overlay, normal;
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.28),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
     inset 0 -1px 0 0 rgba(0, 0, 0, 0.15),
     0 12px 28px -12px rgba(0, 0, 0, 0.55);
   transition:
@@ -169,11 +169,11 @@ body {
 }
 
 .brand-glass:hover {
-  background-color: rgba(255, 255, 255, 0.16);
+  background-color: rgba(255, 255, 255, 0.32);
   border-color: rgba(245, 179, 36, 0.6);
   transform: translateY(-5px);
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
     inset 0 -1px 0 0 rgba(0, 0, 0, 0.2),
     0 14px 26px -8px rgba(245, 179, 36, 0.35),
     0 0 0 1px rgba(245, 179, 36, 0.35);
@@ -190,4 +190,42 @@ body {
 .brand-glass:hover img {
   transform: scale(1.08);
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+}
+
+/* ============================================================
+ * Brands carousel — continuous marquee
+ * The list is duplicated in JSX ([...logos, ...logos]) so we
+ * animate translateX from 0 to -50% for a seamless infinite loop.
+ * Pause on hover; respect reduced-motion preferences.
+ * ============================================================ */
+@keyframes brands-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.brands-marquee {
+  width: max-content;
+  animation: brands-marquee 50s linear infinite;
+  will-change: transform;
+}
+
+/* Desktop shows 5 logos per view: a slightly faster cadence feels natural */
+@media (min-width: 768px) {
+  .brands-marquee {
+    animation-duration: 38s;
+  }
+}
+
+.brands-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brands-marquee {
+    animation: none;
+  }
 }

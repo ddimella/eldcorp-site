@@ -12,6 +12,22 @@ export type Language = "es" | "en";
 export const LangContext = createContextId<Signal<Language>>("eldcorp.lang");
 
 /**
+ * NOTA sobre reactividad del idioma:
+ *
+ * `t()` es una función plana que lee del singleton de i18next. Por sí sola
+ * NO es reactiva: cambiar el idioma no re-renderiza los componentes, lo que
+ * producía el bug reportado por el cliente (al detectar navegador en inglés,
+ * solo se traducía el texto de los componentes que se re-renderizaban por
+ * otras razones, dejando el resto en español).
+ *
+ * La solución es `useTranslate()`: un hook que lee el signal de idioma del
+ * contexto (provisto por layout.tsx) SUSCRIBIÉNDOSE a sus cambios. Cuando el
+ * idioma cambia, el componente se re-renderiza y `t()` devuelve el texto
+ * nuevo. Todos los componentes que muestran texto deben usar
+ * `const t = useTranslate()` en lugar de importar `t` directamente.
+ */
+
+/**
  * Diccionario completo de traducciones ES / EN.
  * Se usa como base de recursos para i18next.
  */
@@ -123,7 +139,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "services.1.title": "Procura de repuestos y componentes",
     "services.1.text":
-      "Localizamos y suministramos piezas para maquinaria pesada de las principales marcas del mercado. Si existe, la conseguimos.",
+      "Localizamos y suministramos repuestos y/o componentes para su maquinaria pesada en las principales Marcas Originales y en opciones no originales más solicitadas del mercado. Coordinamos cada orden desde la identificación del número de parte hasta su entrega final.",
 
     "services.2.title": "Logística internacional",
     "services.2.text":
@@ -143,7 +159,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "services.carousel.1.title": "Procura de repuestos",
     "services.carousel.1.text":
-      "Localizamos y suministramos piezas para maquinaria pesada de las principales marcas del mercado. Coordinamos cada orden desde la identificación del número de parte hasta la entrega final.",
+      "Localizamos y suministramos repuestos y/o componentes para su maquinaria pesada en las principales Marcas Originales y en opciones no originales más solicitadas del mercado. Coordinamos cada orden desde la identificación del número de parte hasta su entrega final.",
     "services.carousel.2.title": "Logística internacional",
     "services.carousel.2.text":
       "Consolidación, embarque y transporte puerta a puerta. Mantenemos informado a nuestros clientes durante todo el proceso, sin necesidad de múltiples proveedores.",
@@ -188,6 +204,14 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.copyright": "© 2025 ELD Corp. Todos los derechos reservados.",
     "footer.tagline":
       "Soluciones integrales para maquinaria pesada y proyectos industriales.",
+
+    // Página de contactos directos (linktree)
+    "links.title": "Contáctanos directamente",
+    "links.subtitle": "Elige una opción para comunicarte con nuestro equipo",
+    "links.call": "Llamar",
+    "links.whatsapp": "WhatsApp",
+    "links.email": "Escríbenos",
+    "links.back": "Volver al inicio",
   },
 
   en: {
@@ -296,7 +320,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "services.1.title": "Spare parts and components sourcing",
     "services.1.text":
-      "We locate and supply parts for heavy machinery from the market's leading brands. If it exists, we find it.",
+      "We source and supply spare parts and/or components for your heavy machinery from the leading Original Brands and the most in-demand non-original options on the market. We coordinate every order from part-number identification through to final delivery.",
 
     "services.2.title": "International logistics",
     "services.2.text":
@@ -316,7 +340,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "services.carousel.1.title": "Parts sourcing",
     "services.carousel.1.text":
-      "We locate and supply parts for heavy machinery from the leading brands. We coordinate every order from part number identification all the way to final delivery.",
+      "We source and supply spare parts and/or components for your heavy machinery from the leading Original Brands and the most in-demand non-original options on the market. We coordinate every order from part-number identification through to final delivery.",
     "services.carousel.2.title": "International logistics",
     "services.carousel.2.text":
       "Consolidation, shipping and door-to-door transportation. We keep our clients informed at every step of the process, with no need for multiple vendors.",
@@ -361,6 +385,14 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.copyright": "© 2025 ELD Corp. All rights reserved.",
     "footer.tagline":
       "Comprehensive solutions for heavy machinery and industrial projects.",
+
+    // Direct contacts page (linktree)
+    "links.title": "Contact us directly",
+    "links.subtitle": "Choose an option to reach our team",
+    "links.call": "Call",
+    "links.whatsapp": "WhatsApp",
+    "links.email": "Email us",
+    "links.back": "Back to home",
   },
 };
 
@@ -393,8 +425,7 @@ const initI18n = () => {
 };
 
 export const setI18nLanguage = (lang: Language) => {
-  const i18n = initI18n();
-  i18n.changeLanguage(lang);
+  initI18n().changeLanguage(lang);
 };
 
 export interface I18nApi {
@@ -403,13 +434,30 @@ export interface I18nApi {
 }
 
 /**
- * Función global de traducción basada en i18next.
- * Se puede usar directamente en cualquier componente: t('clave').
- * No se almacena dentro de ningún store de Qwik, evitando problemas de serialización.
+ * Función de traducción NO reactiva (lectura del singleton de i18next).
+ * Usarla solo donde la reactividad no importe (ej. fuera de componentes).
+ * Dentro de componentes usa `useTranslate()` para que el texto se actualice
+ * al cambiar de idioma.
  */
 export const t = (key: string): string => {
+  return initI18n().t(key);
+};
+
+/**
+ * Hook de traducción REACTIVO. Lee el signal de idioma del contexto
+ * (provisto por layout.tsx) suscribiéndose a sus cambios: cuando el idioma
+ * cambia, el componente se re-renderiza y las llamadas a `t()` devuelven el
+ * texto en el nuevo idioma de forma consistente en toda la página.
+ *
+ * Uso:
+ *   const t = useTranslate();
+ *   <p>{t("mi.clave")}</p>
+ */
+export const useTranslate = () => {
+  const langSignal = useContext(LangContext);
+  const lang = langSignal.value;
   const i18n = initI18n();
-  return i18n.t(key);
+  return (key: string): string => i18n.t(key, { lng: lang });
 };
 
 /**

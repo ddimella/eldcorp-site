@@ -1,7 +1,6 @@
 import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import type { QRL, QwikIntrinsicElements } from "@builder.io/qwik";
-import { TitleComponent } from "~/routes";
-import { t } from "~/i18n";
+import { useTranslate } from "~/i18n";
 
 interface StepsProps {
   selectedStep: number;
@@ -9,6 +8,7 @@ interface StepsProps {
 }
 
 const HeroSteps = component$<StepsProps>(({ selectedStep, onClickStep }) => {
+  const t = useTranslate();
   return (
     <div class="flex items-center">
       <div
@@ -97,11 +97,12 @@ export function MdiWhatsapp(props: QwikIntrinsicElements["svg"], key: string) {
 // WhatsApp number placeholder — replace with the client's real number (international format, no +).
 const WHATSAPP_LINK = "https://wa.me/13055555555";
 const INSTAGRAM_LINK = "https://instagram.com/eldcorp";
-const CONTACT_EMAIL = "eldcorp@gmail.com";
+const CONTACT_EMAIL = "sales@eldparts.com";
 const ADVISOR_MAILTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Hablar con un asesor - ELD Corp")}&body=${encodeURIComponent("Hola, me gustaría hablar con un asesor para recibir más información.")}`;
 
 export default component$(() => {
   const homeStep = useSignal(0);
+  const t = useTranslate();
   // pause autoplay on user interaction (e.g. when they manually click a step)
   const paused = useSignal(false);
 
@@ -171,12 +172,7 @@ export default component$(() => {
         } transition-opacity ease-in-out duration-500`}
       >
         <div class="flex flex-col items-center w-full max-w-md mx-auto text-center pb-16">
-          <TitleComponent
-            name={t("hero.ribbon")}
-            isLong={true}
-            class="text-2xl inter-bold max-w-[280px] text-center mx-auto"
-          />
-          <p class="mt-6 text-4xl sm:text-5xl inter-extrabold leading-tight">
+          <p class="text-4xl sm:text-5xl inter-extrabold leading-tight">
             {t("hero.title.line1")}
           </p>
           <p class="mt-1 text-4xl sm:text-5xl inter-extrabold leading-tight">
@@ -185,7 +181,7 @@ export default component$(() => {
           <p class="mt-4 text-sm sm:text-base text-white/85 leading-relaxed inter-semibold">
             {t("hero.subtitle.list")}
           </p>
-          <div class="mt-6 flex flex-col gap-3 items-center w-full">
+          <div class="mt-12 flex flex-col gap-3 items-center w-full">
             <a
               href="#contact"
               class="bg-[#F5B324] w-full max-w-[260px] h-[50px] flex items-center justify-center text-black font-bold text-base inter-bold rounded-md hover:bg-[#ffc34d] hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-5px_rgba(245,179,36,0.55)] active:scale-95 transition-all duration-300"
@@ -212,8 +208,7 @@ export default component$(() => {
         } transition-opacity ease-in-out duration-500`}
       >
         <div class="max-w-[1100px]">
-          <TitleComponent name={t("hero.ribbon")} isLong={true} />
-          <p class="mt-6 text-[58px] lg:text-[72px] xl:text-[84px] inter-extrabold leading-[1.05] transition-init">
+          <p class="text-[58px] lg:text-[72px] xl:text-[84px] inter-extrabold leading-[1.05] transition-init">
             {t("hero.title.line1")}
           </p>
           <p class="text-[58px] lg:text-[72px] xl:text-[84px] inter-extrabold leading-[1.05] transition-init">
@@ -249,17 +244,12 @@ export default component$(() => {
         } transition-opacity ease-in-out duration-500`}
       >
         <div class="flex flex-col items-center w-full max-w-md mx-auto text-center pb-16">
-          <TitleComponent
-            name={t("hero.slide1.ribbon")}
-            isLong={false}
-            class="text-2xl inter-bold max-w-[280px] text-center mx-auto"
-          />
-          <p class="mt-6 text-3xl sm:text-4xl inter-extrabold leading-tight">
+          <p class="text-3xl sm:text-4xl inter-extrabold leading-tight">
             {t("hero.subtitle")}
           </p>
           <a
             href="#contact"
-            class="mt-8 bg-[#F5B324] w-full max-w-[260px] h-[50px] flex items-center justify-center text-black font-bold inter-bold rounded-md hover:bg-[#ffc34d] hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-5px_rgba(245,179,36,0.55)] active:scale-95 transition-all duration-300"
+            class="mt-12 bg-[#F5B324] w-full max-w-[260px] h-[50px] flex items-center justify-center text-black font-bold inter-bold rounded-md hover:bg-[#ffc34d] hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-5px_rgba(245,179,36,0.55)] active:scale-95 transition-all duration-300"
           >
             {t("hero.cta")}
           </a>
@@ -276,8 +266,7 @@ export default component$(() => {
         } transition-opacity ease-in-out duration-500`}
       >
         <div class="max-w-[1100px]">
-          <TitleComponent name={t("hero.slide1.ribbon")} isLong={false} />
-          <p class="mt-6 text-[58px] lg:text-[72px] xl:text-[84px] font-bold inter-extrabold leading-[1.05]">
+          <p class="text-[58px] lg:text-[72px] xl:text-[84px] font-bold inter-extrabold leading-[1.05]">
             {t("hero.subtitle")}
           </p>
           <div class="mt-7 flex gap-4">
@@ -307,17 +296,12 @@ export default component$(() => {
         } transition-opacity ease-in-out duration-500`}
       >
         <div class="flex flex-col items-center w-full max-w-md mx-auto text-center pb-16">
-          <TitleComponent
-            name={t("hero.slide2.ribbon")}
-            isLong={false}
-            class="text-2xl inter-bold max-w-[280px] text-center mx-auto"
-          />
-          <p class="mt-6 text-3xl sm:text-4xl inter-extrabold leading-tight">
+          <p class="text-3xl sm:text-4xl inter-extrabold leading-tight">
             {t("hero.experience")}
           </p>
           <a
             href="#contact"
-            class="mt-8 bg-[#F5B324] w-full max-w-[260px] h-[50px] flex items-center justify-center text-black font-bold inter-bold rounded-md hover:bg-[#ffc34d] hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-5px_rgba(245,179,36,0.55)] active:scale-95 transition-all duration-300"
+            class="mt-12 bg-[#F5B324] w-full max-w-[260px] h-[50px] flex items-center justify-center text-black font-bold inter-bold rounded-md hover:bg-[#ffc34d] hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-5px_rgba(245,179,36,0.55)] active:scale-95 transition-all duration-300"
           >
             {t("hero.cta")}
           </a>
@@ -334,8 +318,7 @@ export default component$(() => {
         } transition-opacity ease-in-out duration-500`}
       >
         <div class="max-w-[1100px]">
-          <TitleComponent name={t("hero.slide2.ribbon")} isLong={false} />
-          <p class="mt-6 text-[58px] lg:text-[72px] xl:text-[84px] font-bold inter-extrabold leading-[1.05]">
+          <p class="text-[58px] lg:text-[72px] xl:text-[84px] font-bold inter-extrabold leading-[1.05]">
             {t("hero.experience")}
           </p>
           <div class="mt-7 flex gap-4">

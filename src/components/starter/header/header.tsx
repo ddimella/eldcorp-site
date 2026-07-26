@@ -1,8 +1,9 @@
 import { component$ } from '@builder.io/qwik';
 import styles from './header.module.css';
-import { t } from '~/i18n';
+import { useTranslate } from '~/i18n';
 
 export default component$(() => {
+  const t = useTranslate();
 
   return (
     <header class={styles.header + ' relative z-[999999] '}>

@@ -3,7 +3,7 @@ import { routeLoader$ } from '@builder.io/qwik-city';
 
 import Header from '~/components/starter/header/header';
 import Footer from '~/components/starter/footer/footer';
-import { LangContext, type Language, setI18nLanguage } from '~/i18n';
+import { LangContext, setI18nLanguage, type Language } from '~/i18n';
 
 import styles from './styles.css?inline';
 
@@ -16,11 +16,14 @@ export const useServerTimeLoader = routeLoader$(() => {
 export default component$(() => {
   useStyles$(styles);
 
-  // Idioma global (ES por defecto)
+  // Idioma global (ES por defecto). Se provee vía contexto para que
+  // useTranslate() pueda SUSCRIBIRSE y re-renderizar toda la página de forma
+  // consistente al detectar el idioma del navegador (fix del bug de
+  // traducción parcial es/en).
   const langSignal = useSignal<Language>('es');
   useContextProvider(LangContext, langSignal);
 
-  // Detectar idioma del navegador en el cliente y configurar i18n automáticamente
+  // Detectar idioma del navegador en el cliente y sincronizar signal + i18next.
   useVisibleTask$(() => {
     if (typeof navigator === 'undefined') return;
 
@@ -29,6 +32,8 @@ export default component$(() => {
 
     const lang: Language = browserLang.toLowerCase().startsWith('es') ? 'es' : 'en';
 
+    // El cambio del signal re-renderiza los componentes que usan useTranslate();
+    // setI18nLanguage() además actualiza el singleton de i18next.
     langSignal.value = lang;
     setI18nLanguage(lang);
   });
