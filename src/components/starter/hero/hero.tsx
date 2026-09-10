@@ -94,8 +94,8 @@ export function MdiWhatsapp(props: QwikIntrinsicElements["svg"], key: string) {
   );
 }
 
-// WhatsApp number placeholder — replace with the client's real number (international format, no +).
-const WHATSAPP_LINK = "https://wa.me/13055555555";
+// WhatsApp number (international format, no +).
+const WHATSAPP_LINK = "https://wa.me/12393300733";
 const INSTAGRAM_LINK = "https://instagram.com/eldcorp";
 const CONTACT_EMAIL = "sales@eldparts.com";
 const ADVISOR_MAILTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Hablar con un asesor - ELD Corp")}&body=${encodeURIComponent("Hola, me gustaría hablar con un asesor para recibir más información.")}`;

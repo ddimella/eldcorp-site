@@ -9,9 +9,9 @@ import { useTranslate } from "~/i18n";
  * Shared constants
  * ============================================================ */
 
-// Placeholder WhatsApp number — replace with client's real number (international format, no +).
-const WHATSAPP_LINK = "https://wa.me/13055555555";
-const WHATSAPP_DISPLAY = "+1 305 555 5555";
+// WhatsApp number (international format, no +).
+const WHATSAPP_LINK = "https://wa.me/12393300733";
+const WHATSAPP_DISPLAY = "+1 239 330 0733";
 const CONTACT_EMAIL = "sales@eldparts.com";
 
 /* ============================================================

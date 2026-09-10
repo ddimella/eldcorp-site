@@ -173,7 +173,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.description":
       "Estamos disponibles para ayudarte con cotizaciones, consultas técnicas y requerimientos urgentes.",
     "contact.question": "¿Busca un repuesto específico? Escríbanos",
-    "contact.phone": "+1 XXX XXX XXXX",
+    "contact.phone": "+1 239 330 0733",
     "contact.whatsapp": "Chatear ahora",
     "contact.email.label": "Correo electrónico",
     "contact.email.value": "sales@eldparts.com",
@@ -354,7 +354,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.description":
       "We are available to help you with quotes, technical inquiries, and urgent requirements.",
     "contact.question": "Looking for a specific part? Write to us",
-    "contact.phone": "+1 XXX XXX XXXX",
+    "contact.phone": "+1 239 330 0733",
     "contact.whatsapp": "Chat now",
     "contact.email.label": "Email",
     "contact.email.value": "sales@eldparts.com",
